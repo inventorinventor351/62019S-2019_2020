@@ -9,7 +9,7 @@ extern Motor rightBase1;
 extern Motor rightBase2;
 extern Motor leftLift;
 extern Motor rightLift;
-extern Motor intake;
-extern Motor hoarder;
+extern Motor intake1;
+extern Motor intake2;
 
 #endif

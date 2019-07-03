@@ -7,7 +7,7 @@ void runLeftBase(double percVolt) {
 
 }
 
-void runLeftBase(double percVolt) {
+void runRightBase(double percVolt) {
 
     rightBase1.move_voltage((percVolt / 100) * 12000);
     rightBase2.move_voltage((percVolt / 100) * 12000);

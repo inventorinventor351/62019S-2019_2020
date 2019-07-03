@@ -8,8 +8,8 @@
 #define RIGHTBASE2 4
 #define LEFTLIFT 5
 #define RIGHTLIFT 6
-#define INTAKE 7
-#define HOARDER 8
+#define INTAKE1 7
+#define INTAKE2 8
 
 //PID Constants
 
