@@ -3,6 +3,5 @@
 
 extern void runLeftBase(double percVolt);
 extern void runRightBase(double percVolt);
-//testing
 
 #endif
