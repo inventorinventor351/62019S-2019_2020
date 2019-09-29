@@ -42,11 +42,11 @@ void resetRightBase() {
 
 void moveBase(double leftBaseDeltaTicks, double rightBaseDeltaTicks, double time) {
 
-    double leftBaseTarget = getLeftBase() + leftBaseDeltaTicks;
-    double rightBaseTarget = getRightBase() + leftBaseDeltaTicks;
-    
-    PID leftBase (1, 0, 0);
-    PID rightBase (1, 0, 0);
+    const double leftBaseTarget = getLeftBase() + leftBaseDeltaTicks;
+    const double rightBaseTarget = getRightBase() + rightBaseDeltaTicks;
+   
+    PID leftBase (0.325, 0, 0);
+    PID rightBase (0.3, 0, 0);
 
     std::uint_least32_t now = millis();
 
@@ -58,8 +58,14 @@ void moveBase(double leftBaseDeltaTicks, double rightBaseDeltaTicks, double time
         runLeftBase(leftBase.runPID());
         runRightBase(rightBase.runPID());
 
+        //std::cout << "Left Error: " << leftBase.getError() << "   |   Right Error: " << rightBase.getError();
+        std::printf("Left: %7f Right: %f\n", getLeftBase(), getRightBase());
+
         Task::delay_until(&now, 1);
 
     }
+
+    runLeftBase(0);
+    runRightBase(0);
 
 }

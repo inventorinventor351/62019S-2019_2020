@@ -7,6 +7,6 @@ double getLeftBase();
 double getRightBase();
 void resetLeftBase();
 void resetRightBase();
-void moveBase(double leftBaseTicks, double rightBaseTicks, double time);
+void moveBase(double leftBaseDeltaTicks, double rightBaseDeltaTicks, double time);
 
 #endif
