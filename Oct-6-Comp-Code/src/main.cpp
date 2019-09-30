@@ -29,8 +29,9 @@ void autonomous() {
 
 	resetLeftBase();
 	resetRightBase();
+	tray.tare_position();
 
-	blueBigZone();
+	blueSmallZone();
 
 }
 
