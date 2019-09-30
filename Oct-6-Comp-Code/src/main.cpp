@@ -53,8 +53,13 @@ void opcontrol() {
 		else
 			runIntk(0);
 
-		if(master.get_digital(E_CONTROLLER_DIGITAL_L1))
+		if(master.get_digital(E_CONTROLLER_DIGITAL_L1)) {
+
+			intake1.set_brake_mode(E_MOTOR_BRAKE_COAST);
+			intake2.set_brake_mode(E_MOTOR_BRAKE_COAST);
 			runTray(-50);
+
+		}
 
 		else if(master.get_digital(E_CONTROLLER_DIGITAL_L2))
 			runTray(75);
