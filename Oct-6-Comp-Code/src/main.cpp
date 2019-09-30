@@ -45,16 +45,16 @@ void opcontrol() {
 			runIntk(85);
 
 		else if(master.get_digital(E_CONTROLLER_DIGITAL_R2))
-			runIntk(-85);
+			runIntk(-50);
 
 		else
 			runIntk(0);
 
 		if(master.get_digital(E_CONTROLLER_DIGITAL_L1))
-			runTray(75);
+			runTray(-50);
 
 		else if(master.get_digital(E_CONTROLLER_DIGITAL_L2))
-			runTray(-75);
+			runTray(75);
 
 		else
 			runTray(0);
