@@ -4,7 +4,7 @@ void blueBigZone() {
 
     runIntk(85); //run intake
     //need to somehow open up the tray and anti tip cause they passive
-    moveBase(520, 520, 1000); //move forward, pick up cube
+    moveBase(520, 520, 1000, 1000); //move forward, pick up cube
     runIntk(0); //stop intake otherwise cube might fly out of tray
     //turn -90 degrees
     runIntk(85); //start up intake again

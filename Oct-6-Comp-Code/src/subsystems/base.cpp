@@ -40,7 +40,7 @@ void resetRightBase() {
 
 }
 
-void moveBase(double leftBaseDeltaTicks, double rightBaseDeltaTicks, double time, double _maxSpeed = 100) {
+void moveBase(double leftBaseDeltaTicks, double rightBaseDeltaTicks, double time, double _maxSpeed) {
 
     const double leftBaseTarget = getLeftBase() + leftBaseDeltaTicks;
     const double rightBaseTarget = getRightBase() + rightBaseDeltaTicks;
