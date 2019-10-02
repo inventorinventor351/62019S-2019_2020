@@ -1,7 +1,7 @@
 #include "main.h"
 
-void blueSmallZone() 
-{
+void blueSmallZone() {
+    
     runIntk(40);
     moveBase(1100, 1100, 1500);
     runIntk(0);
@@ -12,6 +12,5 @@ void blueSmallZone()
     delay(200);
     runIntk(20);
     moveBase(-100, -100, 2000);
-
 
 }
