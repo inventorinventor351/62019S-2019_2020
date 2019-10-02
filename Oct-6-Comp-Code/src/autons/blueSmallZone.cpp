@@ -2,10 +2,12 @@
 
 void blueSmallZone() 
 {
+    runIntk(80);
+    delay(500);
     runIntk(40);
-    moveBase(1100, 1100, 1500);
+    moveBase(3000, 3000, 4000);
     runIntk(0);
-    moveBase(-500, -500, 1000);
+    moveBase(500, -100, 1000);
     moveBase(100, -500, 1000);
     moveBase(1000, 1000, 1000);
     runTray(-50);
