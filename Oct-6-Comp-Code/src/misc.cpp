@@ -33,10 +33,10 @@ double PID::runPID() {
     prevError = error;
     output = (kP * error) + (kI * integral) + (kD* derivative);
 
-    if(abs(output) > 100) {
+    if(abs(output) > maxSpeed) {
 
         integrate = (sgn(error) == sgn(output)) ? 0 : 1;
-        return 100 * sgn(output);
+        return maxSpeed * sgn(output);
 
     }
 

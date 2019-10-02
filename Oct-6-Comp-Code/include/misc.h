@@ -15,6 +15,7 @@ class PID {
         bool integrate;
 
     public:
+        double maxSpeed;
         PID(double _kP, double _kI, double _kD);
         double getError();
         void setError(double _error);

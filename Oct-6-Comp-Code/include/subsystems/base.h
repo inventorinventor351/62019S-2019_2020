@@ -7,6 +7,6 @@ double getLeftBase();
 double getRightBase();
 void resetLeftBase();
 void resetRightBase();
-void moveBase(double leftBaseDeltaTicks, double rightBaseDeltaTicks, double time);
+void moveBase(double leftBaseDeltaTicks, double rightBaseDeltaTicks, double time, double _maxSpeed = 100);
 
 #endif

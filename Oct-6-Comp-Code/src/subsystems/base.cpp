@@ -40,13 +40,16 @@ void resetRightBase() {
 
 }
 
-void moveBase(double leftBaseDeltaTicks, double rightBaseDeltaTicks, double time) {
+void moveBase(double leftBaseDeltaTicks, double rightBaseDeltaTicks, double time, double _maxSpeed = 100) {
 
     const double leftBaseTarget = getLeftBase() + leftBaseDeltaTicks;
     const double rightBaseTarget = getRightBase() + rightBaseDeltaTicks;
    
     PID leftBase (0.325, 0, 0);
     PID rightBase (0.3, 0, 0);
+
+    leftBase.maxSpeed = _maxSpeed;
+    rightBase.maxSpeed = _maxSpeed;
 
     std::uint_least32_t now = millis();
 
