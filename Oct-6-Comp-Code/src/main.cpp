@@ -18,11 +18,9 @@ void initialize() {
 
 }
 
-
-
-
 void competition_initialize() {
-    
+
+
 
 }
 
@@ -61,11 +59,21 @@ void opcontrol() {
 
 		}
 
-		else if(master.get_digital(E_CONTROLLER_DIGITAL_L2))
+		else if(master.get_digital(E_CONTROLLER_DIGITAL_L2)) {
+
+			intake1.set_brake_mode(E_MOTOR_BRAKE_HOLD);
+			intake2.set_brake_mode(E_MOTOR_BRAKE_HOLD);
 			runTray(75);
 
-		else
+		}
+
+		else {
+
+			intake1.set_brake_mode(E_MOTOR_BRAKE_HOLD);
+			intake2.set_brake_mode(E_MOTOR_BRAKE_HOLD);
 			runTray(0);
+
+		}
 
 	}
 
