@@ -79,3 +79,7 @@ void opcontrol() {
 	}
 
 }
+
+
+
+//.kasugfisdgv
