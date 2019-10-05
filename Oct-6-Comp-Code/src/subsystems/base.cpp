@@ -45,7 +45,7 @@ void moveBase(double leftBaseDeltaTicks, double rightBaseDeltaTicks, double time
     const double leftBaseTarget = getLeftBase() + leftBaseDeltaTicks;
     const double rightBaseTarget = getRightBase() + rightBaseDeltaTicks;
    
-    PID leftBase (0.325, 0, 0);
+    PID leftBase (0.3, 0, 0);
     PID rightBase (0.3, 0, 0);
 
     leftBase.maxSpeed = _maxSpeed;

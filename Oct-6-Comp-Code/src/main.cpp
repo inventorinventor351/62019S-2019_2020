@@ -37,6 +37,14 @@ void autonomous() {
 
 void opcontrol() {
 
+	leftBase1.set_brake_mode(E_MOTOR_BRAKE_COAST);
+	leftBase2.set_brake_mode(E_MOTOR_BRAKE_COAST);
+	rightBase1.set_brake_mode(E_MOTOR_BRAKE_COAST);
+	rightBase2.set_brake_mode(E_MOTOR_BRAKE_COAST);
+	intake1.set_brake_mode(E_MOTOR_BRAKE_HOLD);
+	intake2.set_brake_mode(E_MOTOR_BRAKE_HOLD);
+	tray.set_brake_mode(E_MOTOR_BRAKE_HOLD);
+
 	while (true) {
 
 		runLeftBase(master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y) * 100 / 127);
