@@ -55,7 +55,7 @@ void opcontrol() {
 			runIntk(85);
 
 		else if(master.get_digital(E_CONTROLLER_DIGITAL_R2))
-			runIntk(-50);
+			runIntk(-85);
 
 		else
 			runIntk(0);
