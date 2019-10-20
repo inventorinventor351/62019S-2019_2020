@@ -2,7 +2,7 @@
 
 Controller master (E_CONTROLLER_MASTER);
 
-ADIAnalogIn traypot(8);
+ADIAnalogIn trayPot(8);
 
 Motor leftBase1 (9, E_MOTOR_GEARSET_18, 0, E_MOTOR_ENCODER_COUNTS);
 Motor leftBase2 (11, E_MOTOR_GEARSET_18, 0, E_MOTOR_ENCODER_COUNTS);

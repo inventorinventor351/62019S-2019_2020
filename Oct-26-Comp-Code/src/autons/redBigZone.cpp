@@ -1,6 +1,7 @@
 #include "main.h"
 
-void redigZone()
-{
+void redBigZone() {
+
+    
     
 }

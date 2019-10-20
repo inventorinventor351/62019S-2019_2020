@@ -9,6 +9,8 @@
 
 using namespace pros;
 
+extern int autonCount;
+
 //You should add more #includes here
 #include "pragma.h"
 #include "misc.h"
