@@ -18,14 +18,86 @@ void initialize() {
 
 }
 
-void competition_initialize() {
+int autonCount = 0;
+
+void lcdScroll() {
+
+    if(autonCount < 0) {
+
+        autonCount = 3;
+
+    }
+
+    else if(autonCount > 3) {
+
+        autonCount = 0;
+
+    }
+
+    switch(autonCount) {
+
+            case 0:
+                lcd::set_text(1, "BLUE Big side");
+                break;
+
+            case 1:
+                lcd::set_text(1, "BLUE Small side");
+                break;
+
+            case 2:
+                lcd::set_text(1, "RED Big side");
+                break;
+
+            case 3:
+                lcd::set_text(1, "RED Small side");
+                break;
+
+        }
+
+}
+
+void on_left_pressed() {
+
+    autonCount--;
+    lcdScroll();
+
+}
+
+void on_center_pressed() {
+
+    autonCount = autonCount;
+    lcd::shutdown();
+
+}
+
+void on_right_pressed() {
+
+    autonCount++;
+    lcdScroll();
+
+}
+
+
+//Runs after initialize() and before autonomous. This is intended for competition-specific initialization routines, such as an autonomous selector on the LCD.
+void competition_initialize() {
+       
+    lcd::initialize();
+    lcd::set_text(0, "choose auton");
+    lcdScroll();
+    lcd::register_btn0_cb(on_left_pressed);
+    lcd::register_btn1_cb(on_center_pressed);
+    lcd::register_btn2_cb(on_right_pressed);
+
+
+}
+
 
 
 
 }
 
 
-void autonomous() {
+/*void autonomous() {
 
 	resetLeftBase();
 	resetRightBase();
@@ -34,7 +106,7 @@ void autonomous() {
 	//blueSmallZone();
 	redSmallZone();
 
-}
+}*/
 
 void opcontrol() {
 
