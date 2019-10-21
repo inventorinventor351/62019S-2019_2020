@@ -48,7 +48,7 @@ void lcdScroll() {
 			break;
 
 		default:
-			lcd::set_text(1, "how did you mess up??!");
+			lcd::set_text(1, "how did you mess up|");
 			break;
 
 	}
