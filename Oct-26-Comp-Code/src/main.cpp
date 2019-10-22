@@ -48,7 +48,7 @@ void lcdScroll() {
 			break;
 
 		default:
-			lcd::set_text(1, "how did you mess up??!");
+			lcd::set_text(1, "how did you mess up");
 			break;
 
 	}
@@ -89,7 +89,7 @@ void competition_initialize() {
 
 void autonomous() {
 
-    if(autonCount == 0)
+    /*if(autonCount == 0)
         blueBigZone();
 
     else if(autonCount == 1)
@@ -99,7 +99,9 @@ void autonomous() {
         redBigZone();
 
     else if(autonCount == 3)
-        redSmallZone();
+        redSmallZone();*/
+
+	blueSmallZone();
 
 }
 
@@ -129,10 +131,13 @@ void opcontrol() {
 			runIntk(-50);
 
 		else
-			runIntk(0);
+			runIntk(16);
 
 		if(master.get_digital(E_CONTROLLER_DIGITAL_L1)) {
 
+			runIntk(0);
+			intake1.set_brake_mode(E_MOTOR_BRAKE_COAST);
+			intake2.set_brake_mode(E_MOTOR_BRAKE_COAST);
 			tray.setError(trayPot.get_value() - 3990);
 			runTray(tray.runPID());
 
@@ -140,6 +145,9 @@ void opcontrol() {
 
 		else if(master.get_digital(E_CONTROLLER_DIGITAL_L2)) {
 
+			runIntk(16);
+			intake1.set_brake_mode(E_MOTOR_BRAKE_HOLD);
+			intake2.set_brake_mode(E_MOTOR_BRAKE_HOLD);
 			tray.setError(trayPot.get_value() - 1730);
 			runTray(tray.runPID());
 
@@ -147,6 +155,9 @@ void opcontrol() {
 
 		else {
 
+			runIntk(16);
+			intake1.set_brake_mode(E_MOTOR_BRAKE_HOLD);
+			intake2.set_brake_mode(E_MOTOR_BRAKE_HOLD);
 			tray.setError(0);
 			runTray(tray.runPID());
 

@@ -62,7 +62,15 @@ void moveBase(double leftBaseDeltaTicks, double rightBaseDeltaTicks, double time
         runRightBase(rightBase.runPID());
 
         //std::cout << "Left Error: " << leftBase.getError() << "   |   Right Error: " << rightBase.getError();
-        std::printf("Left: %7f Right: %f\n", getLeftBase(), getRightBase());
+        //std::printf("Left: %7f Right: %f\n", leftBase.getError(), rightBase.getError());
+
+        /*if(!(i % 50)) {
+
+            master.print(0, 0, "%d", leftBase.getError());
+            master.print(1, 0, "%d", rightBase.getError());
+            master.print(2, 0, "Testing");
+
+        }*/
 
         Task::delay_until(&now, 1);
 
