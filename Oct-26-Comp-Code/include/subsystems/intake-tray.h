@@ -3,5 +3,6 @@
 
 void runIntk(double percVolt);
 void runTray(double percVolt);
+void preciseTray(double pos, double time);
 
 #endif
