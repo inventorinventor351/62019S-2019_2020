@@ -1,6 +1,6 @@
 #include "main.h"
 
-void saftyAuton() {
+void oneCubeSafety() { //1 pt
     
     
 

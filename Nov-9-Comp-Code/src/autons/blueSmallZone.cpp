@@ -1,6 +1,6 @@
 #include "main.h"
 
-void blueSmallZone() {
+void blueSmallZone() { //6 pts
 
     runIntk(100);
     moveBase(1000, 1000, 800, 85);

@@ -19,31 +19,19 @@ void lcdScroll() {
 	switch(autonCount) {
 
 		case 0:
-			lcd::set_text(1, "Blue Big Zone");
+			lcd::set_text(1, "blue small zone");
 			break;
 
 		case 1:
-			lcd::set_text(1, "Blue Small Zone!!!!");
+			lcd::set_text(1, "red small zone");
 			break;
 
 		case 2:
-			lcd::set_text(1, "Red Big Zone");
+			lcd::set_text(1, "one cube safety");
 			break;
 
 		case 3:
-			lcd::set_text(1, "Red Small Zone!!!!");
-			break;
-
-		case 4:
-			lcd::set_text(1, "5 Point Blue");
-			break;
-
-		case 5:
-			lcd::set_text(1, "5 Point Red");
-			break;
-
-		case 6:
-			lcd::set_text(1, "NO AUTON!!!!");
+			lcd::set_text(1, "no auton");
 			break;
 
 		default:
@@ -86,51 +74,29 @@ void initialize() {
 	tray1.set_brake_mode(E_MOTOR_BRAKE_COAST);
 	tray2.set_brake_mode(E_MOTOR_BRAKE_COAST);
 
-	/*lcd::initialize();
-	lcd::set_text(0, "Choose auton");
-	lcdScroll();
-	lcd::register_btn0_cb(on_left_pressed);
-	lcd::register_btn1_cb(on_center_pressed);
-	lcd::register_btn2_cb(on_right_pressed);*/
-
 }
 
 void competition_initialize() {
 
-	/*lcd::initialize();
+	lcd::initialize();
 	lcd::set_text(0, "Choose auton");
 	lcdScroll();
 	lcd::register_btn0_cb(on_left_pressed);
 	lcd::register_btn1_cb(on_center_pressed);
-	lcd::register_btn2_cb(on_right_pressed);*/
+	lcd::register_btn2_cb(on_right_pressed);
 
 }
 
 void autonomous() {
 
-    /*if(autonCount == 0)
-    	blueBigZone();
+    if(autonCount == 0)
+    	blueSmallZone();
 
     else if(autonCount == 1)
-    	blueSmallZone();
+    	redSmallZone();
     
     else if(autonCount == 2)
-    	redBigZone();
-
-    else if(autonCount == 3)
-    	redSmallZone();
-		
-	else if(autonCount == 4)
-		fiveBlueZone();
-	
-	else if(autonCount == 5)
-		fiveRedZone();
-	
-	else if(autonCount == 6)
-		saftyAuton();*/
-
-	//blueSmallZone();
-	redSmallZone();
+    	oneCubeSafety();
 
 }
 
