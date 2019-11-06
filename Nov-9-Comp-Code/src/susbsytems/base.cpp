@@ -55,11 +55,11 @@ void moveBase(double leftBaseDeltaTicks, double rightBaseDeltaTicks, double time
 
     for(int i = 0; i < time; i++) {
 
-        leftBase.setError(leftBaseTarget - getLeftBase() - 5);
+        leftBase.setError(leftBaseTarget - getLeftBase());
         rightBase.setError(rightBaseTarget - getRightBase());
 
         runLeftBase(leftBase.runPID());
-        runRightBase(rightBase.runPID() - 2);
+        runRightBase(rightBase.runPID());
 
         //std::cout << "Left Error: " << leftBase.getError() << "   |   Right Error: " << rightBase.getError();
         //std::printf("Left: %7f Right: %f\n", leftBase.getError(), rightBase.getError());

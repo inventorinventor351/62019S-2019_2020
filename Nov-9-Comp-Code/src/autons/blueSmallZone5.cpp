@@ -1,19 +1,16 @@
 #include "main.h"
 
-void redSmallZone() { //5 pts
-    
+void blueSmallZone5() { //5 pts
+
     runIntk(100);
     moveBase(1000, 1000, 800, 85);
-    delay(100);
-    runIntk(77.5);
-    moveBase(2400, 2400, 3000, 30);
-    delay(100);
+    moveBase(2400, 2400, 2700, 37.5);
     runIntk(15);
-    moveBase(-1675, -1675, 1200, 80);    
-    moveBase(1050, -1050, 1100, 50);
+    moveBase(-1800, -1800, 2000, 85);
+    moveBase(-1050, 1050, 1100, 50);
     runTray(-30);
-    moveBase(1600, 1600, 1800, 54);
-    runIntk(50);
+    moveBase(1800, 1800, 1800, 54);
+    runIntk(40);
     delay(250);
     runIntk(0);
     preciseTray(3990, 1300);
@@ -28,8 +25,8 @@ void redSmallZone() { //5 pts
     delay(300);
     runLeftBase(-55);
     runRightBase(-55);
-    delay(2259);
+    delay(2000);
     runLeftBase(0);
     runRightBase(0);
-    
+
 }

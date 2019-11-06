@@ -11,19 +11,19 @@ int autonCount = 0;
 void lcdScroll() {
 
 	if(autonCount < 0)
-		autonCount = 6;
+		autonCount = 5;
 
-	else if(autonCount > 6)
+	else if(autonCount > 5)
 		autonCount = 0;
 
 	switch(autonCount) {
 
 		case 0:
-			lcd::set_text(1, "blue small zone");
+			lcd::set_text(1, "blue small zone 6");
 			break;
 
 		case 1:
-			lcd::set_text(1, "red small zone");
+			lcd::set_text(1, "red small zone 6");
 			break;
 
 		case 2:
@@ -31,6 +31,14 @@ void lcdScroll() {
 			break;
 
 		case 3:
+			lcd::set_text(1, "blue small zone 5");
+			break;
+
+		case 4:
+			lcd::set_text(1, "red small zone 5");
+			break;
+
+		case 5:
 			lcd::set_text(1, "no auton");
 			break;
 
@@ -90,13 +98,19 @@ void competition_initialize() {
 void autonomous() {
 
     if(autonCount == 0)
-    	blueSmallZone();
+    	blueSmallZone6();
 
     else if(autonCount == 1)
-    	redSmallZone();
+    	redSmallZone6();
     
     else if(autonCount == 2)
     	oneCubeSafety();
+
+	else if(autonCount == 3)
+    	blueSmallZone5();
+
+    else if(autonCount == 5)
+    	redSmallZone5();
 
 }
 
