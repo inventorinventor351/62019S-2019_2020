@@ -109,7 +109,7 @@ void autonomous() {
 	else if(autonCount == 3)
     	blueSmallZone5();
 
-    else if(autonCount == 5)
+    else if(autonCount == 4)
     	redSmallZone5();
 
 }
