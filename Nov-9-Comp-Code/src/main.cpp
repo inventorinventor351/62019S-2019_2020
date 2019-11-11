@@ -137,7 +137,7 @@ void opcontrol() {
 			runIntk(85);
 
 		else if(master.get_digital(E_CONTROLLER_DIGITAL_R2))
-			runIntk(-50);
+			runIntk(-70);
 
 		else if(master.get_digital(E_CONTROLLER_DIGITAL_L1) || trayPot.get_value() > 2500)
 			runIntk(0);
@@ -149,7 +149,7 @@ void opcontrol() {
 
 			intake1.set_brake_mode(E_MOTOR_BRAKE_COAST);
 			intake2.set_brake_mode(E_MOTOR_BRAKE_COAST);
-			tray.setError(trayPot.get_value() - 3990);
+			tray.setError(trayPot.get_value() - 3930);
 			runTray(tray.runPID());
 
 		}

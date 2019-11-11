@@ -2,7 +2,7 @@
 
 void blueSmallZone5() { //5 pts
 
-    runIntk(100);
+    runIntk(90);
     moveBase(1000, 1000, 800, 85);
     moveBase(2400, 2400, 2700, 37.5);
     runIntk(15);

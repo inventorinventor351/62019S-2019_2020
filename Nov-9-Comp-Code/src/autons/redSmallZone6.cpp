@@ -2,7 +2,7 @@
 
 void redSmallZone6() { //6 pts
     
-    runIntk(100);
+    runIntk(90);
     moveBase(1000, 1000, 800, 85);
     moveBase(2400, 2400, 2700, 37.5);
     runIntk(20);
@@ -16,7 +16,7 @@ void redSmallZone6() { //6 pts
     moveBase(1050, -1050, 1100, 50);
     runTray(-30);
     moveBase(2450, 2450, 1900, 55);
-    runIntk(33.75);
+    runIntk(40);
     delay(130);
     runIntk(0);
     preciseTray(3990, 1200);

@@ -2,21 +2,21 @@
 
 void blueSmallZone6() { //6 pts
 
-    runIntk(100);
+    runIntk(90);
     moveBase(1000, 1000, 800, 85);
     moveBase(2400, 2400, 2700, 37.5);
     runIntk(20);
     moveBase(675, -675, 910, 45);
-    moveBase(460, 460, 660, 45);
+    moveBase(500, 500, 660, 52.5);
     moveBase(-675, 675, 910, 45);
-    runIntk(75);
-    moveBase(1250, 1250, 1460, 65);
+    runIntk(71.5);
+    moveBase(1250, 1250, 1350, 65);
     runIntk(23.75);
-    moveBase(-1925, -1925, 1350, 70);
+    moveBase(-2100, -2100, 1350, 80);
     moveBase(-1050, 1050, 1100, 50);
     runTray(-30);
     moveBase(2450, 2450, 1900, 55);
-    runIntk(33.75);
+    runIntk(40);
     delay(130);
     runIntk(0);
     preciseTray(3990, 1200);
