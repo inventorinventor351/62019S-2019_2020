@@ -97,7 +97,7 @@ void competition_initialize() {
 
 void autonomous() {
 
-    if(autonCount == 0)
+    /*if(autonCount == 0)
     	blueSmallZone6();
 
     else if(autonCount == 1)
@@ -110,7 +110,9 @@ void autonomous() {
     	blueSmallZone5();
 
     else if(autonCount == 4)
-    	redSmallZone5();
+    	redSmallZone5();*/
+
+	blueSmallZone5();
 
 }
 
@@ -126,7 +128,7 @@ void opcontrol() {
 	tray2.set_brake_mode(E_MOTOR_BRAKE_COAST);
 
 	PID tray(0.25, 0, 0);
-	tray.maxSpeed = 60;
+	tray.maxSpeed = 50;
 
 	while (true) {
 
