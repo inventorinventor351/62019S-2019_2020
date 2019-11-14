@@ -112,7 +112,7 @@ void autonomous() {
     else if(autonCount == 4)
     	redSmallZone5();*/
 
-	blueSmallZone5();
+	blueSmallZone8();
 
 }
 
@@ -127,8 +127,8 @@ void opcontrol() {
 	tray1.set_brake_mode(E_MOTOR_BRAKE_COAST);
 	tray2.set_brake_mode(E_MOTOR_BRAKE_COAST);
 
-	PID tray(0.25, 0, 0);
-	tray.maxSpeed = 50;
+	PID tray(0.05, 0, 0);
+	tray.maxSpeed = 60;
 
 	while (true) {
 
