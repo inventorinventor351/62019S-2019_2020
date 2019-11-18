@@ -16,7 +16,7 @@ void runTray(double percVolt) {
 
 void preciseTray(double pos, double time) {
 
-    PID tray(0.2, 0, 0);
+    PID tray(0.075, 0, 0);
 	tray.maxSpeed = 60;
 
     std::uint_least32_t now = millis();

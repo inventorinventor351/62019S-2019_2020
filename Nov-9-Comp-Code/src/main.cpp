@@ -127,7 +127,7 @@ void opcontrol() {
 	tray1.set_brake_mode(E_MOTOR_BRAKE_COAST);
 	tray2.set_brake_mode(E_MOTOR_BRAKE_COAST);
 
-	PID tray(0.05, 0, 0);
+	PID tray(0.075, 0, 0);
 	tray.maxSpeed = 60;
 
 	while (true) {
@@ -160,7 +160,7 @@ void opcontrol() {
 
 			intake1.set_brake_mode(E_MOTOR_BRAKE_HOLD);
 			intake2.set_brake_mode(E_MOTOR_BRAKE_HOLD);
-			tray.setError(trayPot.get_value() - 1730);
+			tray.setError(trayPot.get_value() - 1690);
 			runTray(tray.runPID());
 
 		}

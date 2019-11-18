@@ -29,7 +29,7 @@ void blueSmallZone5() { //5 pts
     runLeftBase(0);
     runRightBase(0);*/
 
-    runIntk(70);
+    /*runIntk(70);
     moveBase(900, 900, 800, 80);
     runIntk(100);
     preciseTray(2200, 700);
@@ -43,9 +43,6 @@ void blueSmallZone5() { //5 pts
     //runIntk(25);
     runTray(-30);
     moveBase(1600, 1600, 1300, 55);
-    /*runIntk(40);
-    delay(125);
-    runIntk(0);*/
     preciseTray(3990, 1500);
     runIntk(-40);
     delay(300);
@@ -55,6 +52,32 @@ void blueSmallZone5() { //5 pts
     delay(300);
     runTray(30);
     delay(150);
+    runTray(0);
+    moveBase(-2300, -2300, 1700, 55);
+    runLeftBase(40);
+    runRightBase(-40);
+    preciseTray(1690, 1300);
+    runLeftBase(0);
+    runRightBase(0);*/
+
+    runIntk(100);
+    moveBase(900, 900, 1000, 80);
+    runIntk(85);
+    moveBase(2500, 2500, 2800, 37.5);
+    runIntk(0);
+    moveBase(-1600, -1600, 1100, 70);
+    moveBase(-1050, 1050, 1100, 50);
+    runTray(-30);
+    moveBase(1750, 1750, 1500, 55);
+    preciseTray(3990, 1800);
+    runIntk(-40);
+    delay(300);
+    runIntk(0);
+    delay(125);
+    runIntk(-100);
+    delay(500);
+    runTray(30);
+    delay(300);
     runTray(0);
     moveBase(-2300, -2300, 1700, 55);
     runLeftBase(40);
