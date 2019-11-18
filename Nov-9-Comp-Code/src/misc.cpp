@@ -31,7 +31,7 @@ double PID::runPID() {
     integral += integrate ? error : 0;
     derivative = error - prevError;
     prevError = error;
-    output = (kP * error) + (kI * integral) + (kD* derivative);
+    output = (kP * error) + (kI * integral) + (kD * derivative);
 
     if(abs(output) > maxSpeed) {
 

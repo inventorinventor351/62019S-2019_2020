@@ -1,5 +1,7 @@
 #include "main.h"
 
+int autonCount = 0;
+
 void disabled() {
 
 
