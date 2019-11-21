@@ -16,6 +16,6 @@ extern Motor rightBase2;
 extern Motor intake1;
 extern Motor intake2;
 extern Motor tray;
-extern Motor arm;
+extern Motor arms;
 
 #endif
