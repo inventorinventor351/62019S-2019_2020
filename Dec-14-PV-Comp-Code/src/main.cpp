@@ -39,6 +39,9 @@ void opcontrol() {
 
     while(true) {
 
+        runLeftBase(master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y) * 100 / 127);
+        runRightBase(master.get_analog(E_CONTROLLER_ANALOG_RIGHT_Y) * 100 / 127);
+
         Task::delay_until(&now, 1);
 
     }
