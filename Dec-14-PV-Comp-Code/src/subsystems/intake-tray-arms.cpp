@@ -18,3 +18,27 @@ void runArms(double percVolt) {
     arms.move_voltage(percVolt * 12000 / 100);
 
 }
+
+void trayTask(void* param) {
+
+    std::uint_least32_t now = millis();
+
+    while(true) {
+
+        Task::delay_until(&now, 1);
+
+    }
+
+}
+
+void armsTask(void* param) {
+
+    std::uint_least32_t now = millis();
+
+    while(true) {
+
+        Task::delay_until(&now, 1);
+
+    }
+    
+}

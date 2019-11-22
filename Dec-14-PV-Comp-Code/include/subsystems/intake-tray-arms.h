@@ -4,5 +4,7 @@
 void runRollers(double percVolt);
 void runTray(double percVolt);
 void runArms(double percVolt);
+void trayTask(void* param);
+void armsTask(void* param);
 
 #endif

@@ -19,6 +19,9 @@ void initialize() {
     tray.set_brake_mode(E_MOTOR_BRAKE_COAST);
     arms.set_brake_mode(E_MOTOR_BRAKE_COAST);
 
+    Task trayControl (trayTask, (void*)"PROS", "PID Controlled Tray");
+    Task armsControl (armsTask, (void*)"PROS", "PID Controlled Arms");
+
 }
 
 void competition_initialize() {
@@ -42,7 +45,7 @@ void opcontrol() {
         runLeftBase(master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y) * 100 / 127);
         runRightBase(master.get_analog(E_CONTROLLER_ANALOG_RIGHT_Y) * 100 / 127);
 
-        Task::delay_until(&now, 1);
+        Task::delay_until(&now, 20);
 
     }
 
