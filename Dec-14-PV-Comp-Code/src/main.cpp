@@ -45,6 +45,18 @@ void opcontrol() {
         runLeftBase(master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y) * 100 / 127);
         runRightBase(master.get_analog(E_CONTROLLER_ANALOG_RIGHT_Y) * 100 / 127);
 
+        if(master.get_digital(E_CONTROLLER_DIGITAL_R1))
+            runRollers(100);
+
+        else if(master.get_digital(E_CONTROLLER_DIGITAL_R2))
+            runRollers(-100);
+
+        else if(trayPot.get_value() > )
+            runRollers(0);
+
+        else
+            runRollers(20);        
+
         Task::delay_until(&now, 20);
 
     }
