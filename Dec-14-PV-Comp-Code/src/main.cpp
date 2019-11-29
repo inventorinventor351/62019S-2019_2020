@@ -19,8 +19,8 @@ void initialize() {
     tray.set_brake_mode(E_MOTOR_BRAKE_COAST);
     arms.set_brake_mode(E_MOTOR_BRAKE_COAST);
 
-    Task trayControl (trayTask, (void*)"PROS", "PID Controlled Tray");
-    Task armsControl (armsTask, (void*)"PROS", "PID Controlled Arms");
+    //Task trayControl (trayTask, (void*)"PROS", "PID Controlled Tray");
+    //Task armsControl (armsTask, (void*)"PROS", "PID Controlled Arms");
 
 }
 
@@ -51,11 +51,17 @@ void opcontrol() {
         else if(master.get_digital(E_CONTROLLER_DIGITAL_R2))
             runRollers(-100);
 
-        else if(trayPot.get_value() > )
+        else
             runRollers(0);
 
+        if(master.get_digital(E_CONTROLLER_DIGITAL_L1))
+            runTray(60);
+
+        else if(master.get_digital(E_CONTROLLER_DIGITAL_L2))
+            runTray(-100);
+
         else
-            runRollers(20);        
+            runTray(0);
 
         Task::delay_until(&now, 20);
 

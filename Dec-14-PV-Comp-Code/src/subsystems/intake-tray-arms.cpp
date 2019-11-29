@@ -1,6 +1,6 @@
 #include "main.h"
 
-void runIntake(double percVolt) {
+void runRollers(double percVolt) {
 
     intake1.move_voltage(percVolt * 12000 / 100);
     intake2.move_voltage(percVolt * 12000 / 100);
