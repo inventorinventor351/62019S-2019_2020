@@ -63,6 +63,24 @@ void opcontrol() {
         else
             runTray(0);
 
+        if(master.get_digital(E_CONTROLLER_DIGITAL_DOWN))
+            runArms(90);
+
+        else if(master.get_digital(E_CONTROLLER_DIGITAL_B))
+            runArms(-80);
+
+        else if(armPot >= 1235)
+            traytarget = 910;
+
+        else if(armPot <= 1235)
+            trayTarget = TRAY_FULLY_IN;
+
+        else
+            runArms(0);
+            trayTarget = trayPot;
+
+        
+
         Task::delay_until(&now, 20);
 
     }
