@@ -25,7 +25,7 @@ void trayTask(void* param) {
 
     std::uint_least32_t now = millis();
 
-    PID trayPID (0, 0, 0);
+    PID trayPID (0.05435, 0, 0);
     trayPID.setMaxOutput(100);
 
     while(true) {
@@ -47,7 +47,7 @@ void armsTask(void* param) {
 
     std::uint_least32_t now = millis();
 
-    PID armsPID (0, 0, 0);
+    PID armsPID (0.07245, 0, 0);
     armsPID.setMaxOutput(100);
 
     while(true) {
