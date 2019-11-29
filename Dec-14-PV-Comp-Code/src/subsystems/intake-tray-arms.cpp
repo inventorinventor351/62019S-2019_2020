@@ -19,7 +19,7 @@ void runArms(double percVolt) {
 
 }
 
-double trayTarget = 0;
+double trayTarget = TRAY_FULLY_IN;
 
 void trayTask(void* param) {
 
@@ -41,7 +41,7 @@ void trayTask(void* param) {
 
 }
 
-double armsTarget = 0;
+double armsTarget = ARMS_FULLY_DOWN;
 
 void armsTask(void* param) {
 

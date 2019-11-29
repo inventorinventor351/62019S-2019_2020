@@ -19,8 +19,8 @@ void initialize() {
     tray.set_brake_mode(E_MOTOR_BRAKE_COAST);
     arms.set_brake_mode(E_MOTOR_BRAKE_COAST);
 
-    //Task trayControl (trayTask, (void*)"PROS", "PID Controlled Tray");
-    //Task armsControl (armsTask, (void*)"PROS", "PID Controlled Arms");
+    Task trayControl (trayTask, (void*)"PROS", "PID Controlled Tray");
+    Task armsControl (armsTask, (void*)"PROS", "PID Controlled Arms");
 
 }
 
@@ -55,31 +55,28 @@ void opcontrol() {
             runRollers(0);
 
         if(master.get_digital(E_CONTROLLER_DIGITAL_L1))
-            runTray(60);
+            trayTarget = TRAY_FULLY_OUT;
+
+        else if(armPot.get_value() > 1235)
+            trayTarget = TRAY_OUT_OF_THE_WAY;
 
         else if(master.get_digital(E_CONTROLLER_DIGITAL_L2))
-            runTray(-100);
-
-        else
-            runTray(0);
-
-        if(master.get_digital(E_CONTROLLER_DIGITAL_DOWN))
-            runArms(90);
-
-        else if(master.get_digital(E_CONTROLLER_DIGITAL_B))
-            runArms(-80);
-
-        else if(armPot >= 1235)
-            traytarget = 910;
-
-        else if(armPot <= 1235)
             trayTarget = TRAY_FULLY_IN;
 
         else
-            runArms(0);
-            trayTarget = trayPot;
+            trayTarget = trayPot.get_value();
 
+        if(master.get_digital(E_CONTROLLER_DIGITAL_DOWN))
+            armsTarget -= 5;
         
+        else if(master.get_digital(E_CONTROLLER_DIGITAL_B))
+            armsTarget =+ 5;
+
+        if(armsTarget < ARMS_FULLY_DOWN)
+            armsTarget = ARMS_FULLY_DOWN;
+
+        else if(armsTarget > ARMS_FULLY_UP)
+            armsTarget = ARMS_FULLY_UP;
 
         Task::delay_until(&now, 20);
 
