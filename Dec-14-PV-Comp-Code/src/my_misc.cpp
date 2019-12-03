@@ -39,7 +39,7 @@ double PID::runPID() {
     prevSystemVar = systemVar;
     output = (kP * error) + (kI * integral) - (kD * derivative);
 
-    if(abs(output) > maxOutput) {
+    if(fabs(output) > maxOutput) {
 
         integrate = (sgn(error) == sgn(output)) ? 0 : 1;
         return maxOutput * sgn(output);

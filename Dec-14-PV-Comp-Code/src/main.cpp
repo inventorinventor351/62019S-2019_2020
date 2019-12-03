@@ -57,28 +57,24 @@ void opcontrol() {
         if(master.get_digital(E_CONTROLLER_DIGITAL_L1))
             trayTarget = TRAY_FULLY_OUT;
 
-        else if(armPot.get_value() > 1235)
-            trayTarget = TRAY_OUT_OF_THE_WAY;
-
         else if(master.get_digital(E_CONTROLLER_DIGITAL_L2))
             trayTarget = TRAY_FULLY_IN;
 
-        else
-            trayTarget = trayPot.get_value();
+        else if(armPot.get_value() > 1250 && trayPot.get_value() < 1400)
+            trayTarget = TRAY_OUT_OF_THE_WAY;
 
         if(master.get_digital(E_CONTROLLER_DIGITAL_DOWN))
-            armsTarget -= 5;
+            armsTarget = ARMS_FULLY_DOWN;
         
         else if(master.get_digital(E_CONTROLLER_DIGITAL_B))
-            armsTarget =+ 5;
-
-        if(armsTarget < ARMS_FULLY_DOWN)
-            armsTarget = ARMS_FULLY_DOWN;
-
-        else if(armsTarget > ARMS_FULLY_UP)
             armsTarget = ARMS_FULLY_UP;
 
-        Task::delay_until(&now, 20);
+        else
+            armsTarget = armPot.get_value();        
+
+        Task::delay_until(&now, 100);
+
+        std::cout << armsTarget - armPot.get_value() << std::endl;
 
     }
 

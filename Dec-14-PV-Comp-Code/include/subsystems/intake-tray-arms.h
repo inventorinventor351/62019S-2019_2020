@@ -5,11 +5,11 @@ void runRollers(double percVolt);
 void runTray(double percVolt);
 void runArms(double percVolt);
 #define TRAY_FULLY_IN 450
-#define TRAY_OUT_OF_THE_WAY 910
+#define TRAY_OUT_OF_THE_WAY 1225
 #define TRAY_FULLY_OUT 2290
 extern double trayTarget;
 void trayTask(void* param);
-#define ARMS_FULLY_DOWN 1190
+#define ARMS_FULLY_DOWN 1200
 #define ARMS_FULLY_UP 2570
 extern double armsTarget;
 void armsTask(void* param);
