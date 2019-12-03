@@ -47,7 +47,7 @@ void armsTask(void* param) {
 
     std::uint_least32_t now = millis();
 
-    PID armsPID (0.25, 0, 0);
+    PID armsPID (0.25, 0.00004, 0);
     armsPID.setMaxOutput(100);
 
     while(true) {
