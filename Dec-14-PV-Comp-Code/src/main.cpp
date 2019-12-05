@@ -32,7 +32,7 @@ void competition_initialize() {
 
 void autonomous() {
 
-
+    blueSmallZone();
 
 }
 
@@ -73,8 +73,6 @@ void opcontrol() {
             armsTarget = armPot.get_value();        
 
         Task::delay_until(&now, 100);
-
-        std::cout << armsTarget - armPot.get_value() << std::endl;
 
     }
 

@@ -3,5 +3,10 @@
 
 void runLeftBase(double percVolt);
 void runRightBase(double percVolt);
+double getLeftBase();
+double getRightBase();
+void resetLeftBase();
+void resetRightBase();
+void moveBase(double leftBaseDeltaTicks, double rightBaseDeltaTicks, double time, double _maxOutput);
 
 #endif
