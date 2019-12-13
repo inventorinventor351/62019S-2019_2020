@@ -42,20 +42,25 @@ void trayTask(void* param) {
 }
 
 double armsTarget = ARMS_FULLY_DOWN;
+bool armsActive = true;
 
 void armsTask(void* param) {
 
     std::uint_least32_t now = millis();
 
-    PID armsPID (0.25, 0.00004, 0);
+    PID armsPID (0.25, 0.0005, 0);
     armsPID.setMaxOutput(100);
 
     while(true) {
 
+        if(armsActive) {
+        
         armsPID.setError(armsTarget - armPot.get_value());
         armsPID.setSystemVar(armPot.get_value());
 
         runArms(armsPID.runPID());
+
+        }
 
         Task::delay_until(&now, 10);
 

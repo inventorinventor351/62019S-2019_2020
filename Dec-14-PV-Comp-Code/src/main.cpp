@@ -32,7 +32,7 @@ void competition_initialize() {
 
 void autonomous() {
 
-    blueSmallZone();
+    redSmallZone();
 
 }
 
