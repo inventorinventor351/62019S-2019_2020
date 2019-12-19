@@ -21,6 +21,8 @@ void opcontrol(void);
 
 #ifdef __cplusplus //inclusions of other project files, sorta brings the whole thing together
 
+#include <vector>
+double sgn(double x);
 #include "pragma.h" //creates objects for all sensors, motors, and controllers that robot uses
 #include "PID.h" //reusable PID class that makes motor control easier and more portable
 #include "subsystems/base.h" //methods and tasks related to the base

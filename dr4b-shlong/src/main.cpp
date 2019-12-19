@@ -1,5 +1,11 @@
 #include "main.h"
 
+double sgn(double x) { //returns sign (-1 or 1) of a number, and 0 for 0
+
+	return (x > 0) - (x < 0);
+
+}
+
 void disabled() { //disable all subsystems
 
 
