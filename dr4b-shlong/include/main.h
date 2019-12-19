@@ -21,10 +21,11 @@ void opcontrol(void);
 
 #ifdef __cplusplus //inclusions of other project files, sorta brings the whole thing together
 
-#include <vector>
-double sgn(double x);
+#include <vector> //c++ standard library that gives access to more flexible arrays
+double sgn(double x); //returns sign of number
+void betterDelay(int ms); //delays for a certain number of milliseconds
 #include "pragma.h" //creates objects for all sensors, motors, and controllers that robot uses
-#include "PID.h" //reusable PID class that makes motor control easier and more portable
+#include "FPID.h" //reusable PID class that makes motor control easier and more portable
 #include "subsystems/base.h" //methods and tasks related to the base
 #include "subsystems/rollers.h" //methods and tasks related to the intake rollers
 #include "subsystems/tray.h" //methods and tasks related to the tray

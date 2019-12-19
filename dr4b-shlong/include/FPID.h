@@ -1,5 +1,5 @@
-#ifndef _PID_H_
-#define _PID_H_
+#ifndef _FPID_H_
+#define _FPID_H_
 
 class FPID { //blueprint FPID, makes implementing the algorithm for different subsystems really easy
 
