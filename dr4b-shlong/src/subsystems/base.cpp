@@ -14,6 +14,9 @@ void pwrRightBase(double voltPerc) {
 
 }
 
+double leftVel = 0; //logically, base starts at at 0 vel when code starts
+double rightVel = 0; //logically, base starts at at 0 vel when code starts
+
 void getLeftVel(void* param) {
 
     std::uint_least32_t now = millis();
