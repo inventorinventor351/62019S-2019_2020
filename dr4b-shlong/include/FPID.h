@@ -20,7 +20,7 @@ class FPID { //blueprint FPID, makes implementing the algorithm for different su
     FPID(double _kF, double _kP, double _kI, double _kD); //constructor, takes values for k constants for feed foward, proportional, integral, and derivative components of FPID
     void setSetPoint(double _error); //sets error for the FPID algorithm
     void setSystemVar(double _systemVar); //set system variable for the FPID algorithm
-    void setMaxOutput(double _maxOutput); //sets max output for the FPID algorithm
+    void setOutputBounds(double _minOutput, double _maxOutput); //sets bounds for the output
     double run(); //computes FPID algorithm
 
 };

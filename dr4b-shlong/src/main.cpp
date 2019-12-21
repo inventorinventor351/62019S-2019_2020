@@ -47,7 +47,7 @@ void opcontrol() { //run driver controls
 
 
 
-	while (true) {
+	while (true) { //loop indefinitely
 
 		
 		

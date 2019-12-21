@@ -21,8 +21,9 @@ void FPID::setSystemVar(double _systemVar) {
 
 }
 
-void FPID::setMaxOutput(double _maxOutput) {
+void FPID::setOutputBounds(double _minOutput, double _maxOutput) {
 
+    minOutput = _minOutput;
     maxOutput = _maxOutput;
 
 }
