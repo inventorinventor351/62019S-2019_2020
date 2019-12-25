@@ -55,12 +55,18 @@ void getRightVel(void* param) {
 
 }
 
+double leftAccel = 100; //make it something high so that left base doesn't take long to reach its target velocity
+double rightAccel = 100; //make it something high so that right base doesn't take long to reach its target velocity
+
 double leftVelTarget = 0; //default target is 0 rpm (aka not moving)
 double rightVelTarget = 0; //default target is 0 rpm (aka not moving)
 
 void baseVelControl(void* param) {
 
     std::uint_least32_t now = millis();
+
+    double intermediateLeftVelTarget = 0; //intermediate value that ramps up or down towards the left base velocity target
+    double intermediateRightVelTarget = 0; //intermediate value that ramps up or down towards the right bsae velocity target
 
     FPID leftVelFPID (0, 0, 0, 0); //FPID object for left base initialized with constants of
     FPID rightVelFPID (0, 0, 0, 0); //FPID object for right base initialized with constants of
@@ -70,8 +76,11 @@ void baseVelControl(void* param) {
 
     while(true) { //loop indefinitely
 
-        leftVelFPID.setSetPoint(leftVelTarget); //tell FPID controller to run left base as accurately as possible to the target velocity
-        rightVelFPID.setSetPoint(rightVelTarget); //tell FPID controller to run right base as accurately as possible to the target velocity
+        intermediateLeftVelTarget = (fabs(leftVelTarget - intermediateLeftVelTarget) < leftAccel) ? (leftVelTarget) : (intermediateLeftVelTarget + (leftAccel * sgn(leftVelTarget - intermediateLeftVelTarget))); //increments or decrements intermediate left velocity target by left acceleration until the difference between actual left target and intermediate left target is less than the left acceleration
+        intermediateRightVelTarget = (fabs(rightVelTarget - intermediateRightVelTarget) < rightAccel) ? (rightVelTarget) : (intermediateRightVelTarget + (rightAccel * sgn(rightVelTarget - intermediateRightVelTarget))); //increments or decrements intermediate right velocity target by right acceleration until the difference between actual right target and intermediate right target is less than the right acceleration
+
+        leftVelFPID.setSetPoint(intermediateLeftVelTarget); //tell FPID controller to run left base as accurately as possible to the target velocity
+        rightVelFPID.setSetPoint(intermediateRightVelTarget); //tell FPID controller to run right base as accurately as possible to the target velocity
 
         leftVelFPID.setSystemVar(leftVel); //pass through current left base velocity
         rightVelFPID.setSystemVar(rightVel); //pass through current right base velocity

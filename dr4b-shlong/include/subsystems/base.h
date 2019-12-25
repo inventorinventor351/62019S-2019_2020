@@ -7,6 +7,8 @@ extern double leftVel; //variable to store the current velocity of left base
 extern double rightVel; //variable to store the current velocity of right base
 void getLeftVel(void* param); //task that calculates rpm for left side of base (idk if its units are rotations per minute tho)
 void getRightVel(void* param); //task that calculates rpm for right side of base (idk if its units are rotations per minute tho)
+extern double leftAccel; //how quickly the left base should ramp up or down to the target velocity, angular acceleration
+extern double rightAccel; //how quickly the right base should ramp up or down to the target velocity, angular acceleration
 extern double leftVelTarget; //left target rpm that the FPID controller for the base will try to meet (idk if its units are rotations per minute tho)
 extern double rightVelTarget; //right target rpm that the FPID controller for the base will try to meet (idk if its units are rotations per minute tho)
 void baseVelControl(void* param); //FPID base controller task
