@@ -61,6 +61,29 @@ double rightAccel = 100; //make it something high so that right base doesn't tak
 double leftVelTarget = 0; //default target is 0 rpm (aka not moving)
 double rightVelTarget = 0; //default target is 0 rpm (aka not moving)
 
+void setBaseTrajectories(double _leftVelTarget, double _leftAccel, double _rightVelTarget, double _rightAccel) {
+
+    leftVelTarget = _leftVelTarget;
+    leftAccel = _leftAccel;
+    rightVelTarget = _rightVelTarget;
+    rightAccel = _rightAccel;
+
+}
+
+void setBaseVelocities(double _leftVelTarget, double _rightVelTarget) {
+
+    leftVelTarget = _leftVelTarget;
+    rightVelTarget = _rightVelTarget;
+    
+}
+
+void setBaseAccelerations(double _leftAccel, double _rightAccel) {
+
+    leftAccel = _leftAccel;
+    rightAccel = _rightAccel;
+    
+}
+
 void baseVelControl(void* param) {
 
     std::uint_least32_t now = millis();
