@@ -49,7 +49,35 @@ void opcontrol() { //run driver controls
 
 	while (true) { //loop indefinitely
 
-		
+		pwrLeftBase(master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y) * 100 / 127);
+		pwrRightBase(master.get_analog(E_CONTROLLER_ANALOG_RIGHT_Y) * 100 / 127);
+
+		if(master.get_digital(E_CONTROLLER_DIGITAL_R1))
+			pwrRollers(100);
+
+		else if(master.get_digital(E_CONTROLLER_DIGITAL_R2))
+			pwrRollers(-100);
+
+		else
+			pwrRollers(0);
+
+		if(master.get_digital(E_CONTROLLER_DIGITAL_L1))
+			pwrTray(100);
+
+		else if(master.get_digital(E_CONTROLLER_DIGITAL_L2))
+			pwrTray(-100);
+
+		else
+			pwrTray(0);
+
+		if(master.get_digital(E_CONTROLLER_DIGITAL_UP))
+			pwrLift(100);
+
+		else if(master.get_digital(E_CONTROLLER_DIGITAL_DOWN))
+			pwrLift(-100);
+
+		else
+			pwrRollers(0);
 		
 	}
 
