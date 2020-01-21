@@ -26,7 +26,17 @@ void disabled() { //disable all subsystems
 
 void initialize() { //set motor break modes and start subsystem tasks
 	
+	leftBase1.set_brake_mode(E_MOTOR_BRAKE_COAST);
+    leftBase2.set_brake_mode(E_MOTOR_BRAKE_COAST);
+    rightBase1.set_brake_mode(E_MOTOR_BRAKE_COAST);
+    rightBase2.set_brake_mode(E_MOTOR_BRAKE_COAST);
+    leftRoller.set_brake_mode(E_MOTOR_BRAKE_HOLD);
+    rightRoller.set_brake_mode(E_MOTOR_BRAKE_HOLD);
+    trayMtr.set_brake_mode(E_MOTOR_BRAKE_COAST);
+    armsMtr.set_brake_mode(E_MOTOR_BRAKE_COAST);
 
+    Task trayControl (trayTask, (void*)"PROS", "PID Controlled Tray");
+    Task armsControl (armsTask, (void*)"PROS", "PID Controlled Arms");
 
 }
 
