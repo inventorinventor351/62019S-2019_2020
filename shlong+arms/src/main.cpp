@@ -75,14 +75,18 @@ void opcontrol() { //run driver controls
 
 		if(master.get_digital(E_CONTROLLER_DIGITAL_L1) && !master.get_digital(E_CONTROLLER_DIGITAL_UP)) {
 
-            trayTaskActive = true;
+            armsTaskActive = false;
+			pwrArms(0);
+			trayTaskActive = true;
 			trayTarget = TRAY_FULLY_OUT;
 
 		}
 
         else if((master.get_digital(E_CONTROLLER_DIGITAL_L2) && !master.get_digital(E_CONTROLLER_DIGITAL_UP)) || (armsPot.get_value() < 1250 && trayTarget != TRAY_FULLY_IN)) {
 
-            trayTaskActive = true;
+            armsTaskActive = true;
+			armsTarget = ARMS_FULLY_DOWN;
+			trayTaskActive = true;
 			trayTarget = TRAY_FULLY_IN;
 
 		}
@@ -103,6 +107,7 @@ void opcontrol() { //run driver controls
 			trayTaskActive = true;
 			trayTarget = TRAY_OUT_OF_THE_WAY;
 			lastArmsPot = armsPot.get_value();
+			armsTaskActive = true;
 			armsTarget = ARMS_FULLY_UP;
 
 		}
@@ -110,12 +115,17 @@ void opcontrol() { //run driver controls
 		else if(master.get_digital(E_CONTROLLER_DIGITAL_DOWN)) {
 
 			lastArmsPot = armsPot.get_value();
+			armsTaskActive = true;
 			armsTarget = ARMS_FULLY_DOWN;
 
 		}
 
-		else
+		else {
+
+			armsTaskActive = true;
 			armsTarget = lastArmsPot;
+
+		}
 
 		Task::delay_until(&now, 100); //iterate 10 times per second
 		
