@@ -57,6 +57,8 @@ void opcontrol() { //run driver controls
 
 	std::uint_least32_t now = millis();
 
+	int lastArmsPot = armsPot.get_value();
+
 	while (true) { //loop indefinitely
 
 		pwrLeftBase(master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y) * 100 / 127);
@@ -71,23 +73,49 @@ void opcontrol() { //run driver controls
 		else
 			pwrRollers(0);
 
-		if(master.get_digital(E_CONTROLLER_DIGITAL_L1))
+		if(master.get_digital(E_CONTROLLER_DIGITAL_L1) && !master.get_digital(E_CONTROLLER_DIGITAL_UP)) {
+
+            trayTaskActive = true;
+			trayTarget = TRAY_FULLY_OUT;
+
+		}
+
+        else if((master.get_digital(E_CONTROLLER_DIGITAL_L2) && !master.get_digital(E_CONTROLLER_DIGITAL_UP)) || (armsPot.get_value() < 1250 && trayTarget != TRAY_FULLY_IN)) {
+
+            trayTaskActive = true;
+			trayTarget = TRAY_FULLY_IN;
+
+		}
+
+		else
+			trayTaskActive = true;
+
+		if(master.get_digital(E_CONTROLLER_DIGITAL_UP) && trayPot.get_value() < 750) {
+
+			trayTaskActive = false;
 			pwrTray(100);
+			lastArmsPot = armsPot.get_value();
 
-		else if(master.get_digital(E_CONTROLLER_DIGITAL_L2))
-			pwrTray(-100);
+		}
+
+		else if(master.get_digital(E_CONTROLLER_DIGITAL_UP)) {
+
+			trayTaskActive = true;
+			trayTarget = TRAY_OUT_OF_THE_WAY;
+			lastArmsPot = armsPot.get_value();
+			armsTarget = ARMS_FULLY_UP;
+
+		}
+
+		else if(master.get_digital(E_CONTROLLER_DIGITAL_DOWN)) {
+
+			lastArmsPot = armsPot.get_value();
+			armsTarget = ARMS_FULLY_DOWN;
+
+		}
 
 		else
-			pwrTray(0);
-
-		if(master.get_digital(E_CONTROLLER_DIGITAL_UP))
-			pwrArms(100);
-
-		else if(master.get_digital(E_CONTROLLER_DIGITAL_DOWN))
-			pwrArms(-100);
-
-		else
-			pwrArms(0);
+			armsTarget = lastArmsPot;
 
 		Task::delay_until(&now, 100); //iterate 10 times per second
 		

@@ -6,14 +6,14 @@ void pwrArms(double voltPerc) {
 
 }
 
-double armsTarget = ARMS_FULLY_DOWN;
-bool armsTaskActive = false;
+double armsTarget = ARMS_FULLY_DOWN; //arms stay down by defualt
+bool armsTaskActive = true; //arms task active by default
 
 void armsTask(void* param) {
 
     std::uint_least32_t now = millis();
 
-    PID armsPID (0.25, 0.0005, 0);
+    PID armsPID (0.5, 0.001, 0);
     armsPID.setOutputBounds(0, 100);
 
     while(true) {
@@ -27,7 +27,7 @@ void armsTask(void* param) {
 
         }
 
-        Task::delay_until(&now, 10);
+        Task::delay_until(&now, 10); //iterate 100 times a second
 
     }
     

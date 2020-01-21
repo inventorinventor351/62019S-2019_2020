@@ -6,8 +6,8 @@ void pwrTray(double voltPerc) {
 
 }
 
-double trayTarget = TRAY_FULLY_IN;
-bool trayTaskActive = false;
+double trayTarget = TRAY_FULLY_IN; //tray stays in by default
+bool trayTaskActive = true; //tray task active by default
 
 void trayTask(void* param) {
 
@@ -27,7 +27,7 @@ void trayTask(void* param) {
 
         }
 
-        Task::delay_until(&now, 10);
+        Task::delay_until(&now, 10); //iterate 100 times a second
 
     }
 
