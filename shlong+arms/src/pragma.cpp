@@ -3,7 +3,7 @@
 Controller master (E_CONTROLLER_MASTER); //initializing main and only controller as the master controller
 
 ADIAnalogIn trayPot (5); //legacy port E
-ADIAnalogIn ArmsPot (6); //legacy port F
+ADIAnalogIn armsPot (6); //legacy port F
 
 Motor leftBase1 (20, E_MOTOR_GEARSET_18, 0, E_MOTOR_ENCODER_COUNTS); //v5 port 1, 200 rpm, not reversed, returns its encoder value in raw untis
 Motor leftBase2 (2, E_MOTOR_GEARSET_18, 0, E_MOTOR_ENCODER_COUNTS); //v5 port 2, 200 rpm, not reversed, returns its encoder value in raw untis

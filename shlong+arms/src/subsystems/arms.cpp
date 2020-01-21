@@ -7,7 +7,7 @@ void pwrArms(double voltPerc) {
 }
 
 double armsTarget = ARMS_FULLY_DOWN;
-bool armsTaskActive = true;
+bool armsTaskActive = false;
 
 void armsTask(void* param) {
 

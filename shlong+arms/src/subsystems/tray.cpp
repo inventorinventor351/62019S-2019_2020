@@ -7,7 +7,7 @@ void pwrTray(double voltPerc) {
 }
 
 double trayTarget = TRAY_FULLY_IN;
-bool trayTaskActive = true;
+bool trayTaskActive = false;
 
 void trayTask(void* param) {
 
