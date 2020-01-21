@@ -45,7 +45,7 @@ void autonomous() { //run auton that was selector from auton selector
 
 void opcontrol() { //run driver controls
 
-
+	std::uint_least32_t now = millis();
 
 	while (true) { //loop indefinitely
 
@@ -77,7 +77,9 @@ void opcontrol() { //run driver controls
 			pwrLift(-100);
 
 		else
-			pwrRollers(0);
+			pwrLift(0);
+
+		Task::delay_until(&now, 100); //iterate 10 times per second
 		
 	}
 
