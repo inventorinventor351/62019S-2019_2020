@@ -1,65 +1,13 @@
-/**
- * \file main.h
- *
- * Contains common definitions and header files used throughout your PROS
- * project.
- *
- * Copyright (c) 2017-2019, Purdue University ACM SIGBots.
- * All rights reserved.
- *
- * This Source Code Form is subject to the terms of the Mozilla Public
- * License, v. 2.0. If a copy of the MPL was not distributed with this
- * file, You can obtain one at http://mozilla.org/MPL/2.0/.
- */
-
 #ifndef _PROS_MAIN_H_
 #define _PROS_MAIN_H_
 
-/**
- * If defined, some commonly used enums will have preprocessor macros which give
- * a shorter, more convenient naming pattern. If this isn't desired, simply
- * comment the following line out.
- *
- * For instance, E_CONTROLLER_MASTER has a shorter name: CONTROLLER_MASTER.
- * E_CONTROLLER_MASTER is pedantically correct within the PROS styleguide, but
- * not convienent for most student programmers.
- */
-#define PROS_USE_SIMPLE_NAMES
+#define _USE_MATH_DEFINES //allows use of already defined mathematical constants
+#include "api.h" //includes PROS library that is needed to control motors and read sensor values
+#include "pros/apix.h" //includes addition tools from PROS, most importantly LLEMU functionality (aka custom v5 screen UI)
 
-/**
- * If defined, C++ literals will be available for use. All literals are in the
- * pros::literals namespace.
- *
- * For instance, you can do `4_mtr = 50` to set motor 4's target velocity to 50
- */
-#define PROS_USE_LITERALS
+using namespace pros; //don't have to "pros::" every time
 
-#include "api.h"
-
-/**
- * You should add more #includes here
- */
-//#include "okapi/api.hpp"
-//#include "pros/api_legacy.h"
-
-/**
- * If you find doing pros::Motor() to be tedious and you'd prefer just to do
- * Motor, you can use the namespace with the following commented out line.
- *
- * IMPORTANT: Only the okapi or pros namespace may be used, not both
- * concurrently! The okapi namespace will export all symbols inside the pros
- * namespace.
- */
-// using namespace pros;
-// using namespace pros::literals;
-// using namespace okapi;
-
-/**
- * Prototypes for the competition control tasks are redefined here to ensure
- * that they can be called from user code (i.e. calling autonomous from a
- * button press in opcontrol() for testing purposes).
- */
-#ifdef __cplusplus
+#ifdef __cplusplus //declarations of PROS's main functions
 extern "C" {
 #endif
 void autonomous(void);
@@ -71,11 +19,19 @@ void opcontrol(void);
 }
 #endif
 
-#ifdef __cplusplus
-/**
- * You can add C++-only headers here
- */
-//#include <iostream>
+#ifdef __cplusplus //inclusions of other project files, sorta brings the whole thing together
+
+#include <vector> //c++ standard library that gives access to more flexible arrays
+double sgn(double x); //returns sign of number
+void betterDelay(int ms); //delays for a certain number of milliseconds
+#include "pragma.h" //creates objects for all sensors, motors, and controllers that robot uses
+#include "PID.h" //reusable PID class that makes motor control easier and more portable
+#include "subsystems/base.h" //methods and tasks related to the base
+#include "subsystems/rollers.h" //methods and tasks related to the intake rollers
+#include "subsystems/tray.h" //methods and tasks related to the tray
+#include "subsystems/arms.h" //methods and tasks related to the dr4b lift
+#include "autonRoutines.h" //methods related to robot macros and autonomi
+
 #endif
 
-#endif  // _PROS_MAIN_H_
+#endif
