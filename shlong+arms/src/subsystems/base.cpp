@@ -45,28 +45,33 @@ void driveStraight(double distance, int time, double maxOut) {
     std::uint_least32_t now = millis();
 
     double distVal = 0;
-    PID dist (0, 0, 0);
+    PID dist (0.2, 0, 0.325);
     dist.setOutputBounds(0, maxOut);
     dist.setSetPoint(distance);
 
     double diffVal = 0;
-    PID diff (0, 0, 0);
-    diff.setOutputBounds(0, (maxOut * 0.1));
+    PID diff (1, 0, 0);
+    diff.setOutputBounds(0, maxOut);
     diff.setSetPoint(0);
 
     resetLeftBase();
     resetRightBase();
 
-    for(int i = 0; i < time; i+10) {
+    for(int i = 0; i < time; i+=10) {
 
-        dist.setSystemVar((getLeftBase() + getRightBase()) / 2.0);
-        diff.setSystemVar((getLeftBase() - getRightBase()) / 2.0);
+        const double leftEnc = getLeftBase();
+        const double rightEnc = getRightBase();
+
+        dist.setSystemVar((leftEnc + rightEnc) / 2.0);
+        diff.setSystemVar((leftEnc - rightEnc) / 2.0);
 
         distVal = dist.run();
         diffVal = diff.run();
 
-        pwrLeftBase(distVal - diffVal);
-        pwrRightBase(distVal + diffVal);
+        pwrLeftBase(distVal + diffVal);
+        pwrRightBase(distVal - diffVal);
+
+        std::cout << "time: " << i << "  |  " << "leftEnc: " << leftEnc << "  |  " << "leftPwr: " << distVal + diffVal << "  |  " << "rightEnc: " << rightEnc << "  |  " << "rightPwr: " << distVal - diffVal << "\n";
 
         Task::delay_until(&now, 10);
 
@@ -82,19 +87,22 @@ void basePivot(double angle, int time, double maxOut) {
     std::uint_least32_t now = millis();
 
     double distVal = 0;
-    PID dist (0, 0, 0);
-    dist.setOutputBounds(0, (maxOut * 0.1));
+    PID dist (1, 0, 0);
+    dist.setOutputBounds(0, maxOut);
     dist.setSetPoint(0);
 
     double diffVal = 0;
-    PID diff (0, 0, 0);
+    PID diff (0.2, 0, 0.325);
     diff.setOutputBounds(0, maxOut);
     diff.setSetPoint(angle);
 
     resetLeftBase();
     resetRightBase();
 
-    for(int i = 0; i < time; i+10) {
+    for(int i = 0; i < time; i+=10) {
+
+        const double leftEnc = getLeftBase();
+        const double rightEnc = getRightBase();
 
         dist.setSystemVar((getLeftBase() + getRightBase()) / 2.0);
         diff.setSystemVar((getLeftBase() - getRightBase()) / 2.0);
@@ -102,8 +110,10 @@ void basePivot(double angle, int time, double maxOut) {
         distVal = dist.run();
         diffVal = diff.run();
 
-        pwrLeftBase(distVal - diffVal);
-        pwrRightBase(distVal + diffVal);
+        pwrLeftBase(distVal + diffVal);
+        pwrRightBase(distVal - diffVal);
+
+        std::cout << "time: " << i << "  |  " << "leftEnc: " << leftEnc << "  |  " << "leftPwr: " << distVal + diffVal << "  |  " << "rightEnc: " << rightEnc << "  |  " << "rightPwr: " << distVal - diffVal << "\n";
 
         Task::delay_until(&now, 10);
 

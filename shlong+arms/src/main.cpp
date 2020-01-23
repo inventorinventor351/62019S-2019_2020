@@ -48,7 +48,7 @@ void competition_initialize() { //display auton selector
 
 void autonomous() { //run auton that was selector from auton selector
 
-
+	redSmallZone();
 
 }
 
@@ -73,7 +73,7 @@ void opcontrol() { //run driver controls
 		else
 			pwrRollers(0);
 
-		if(master.get_digital(E_CONTROLLER_DIGITAL_L1) && !master.get_digital(E_CONTROLLER_DIGITAL_UP)) {
+		if(master.get_digital(E_CONTROLLER_DIGITAL_L1) && !master.get_digital(E_CONTROLLER_DIGITAL_DOWN)) {
 
             armsTaskActive = false;
 			pwrArms(0);
@@ -82,7 +82,7 @@ void opcontrol() { //run driver controls
 
 		}
 
-        else if((master.get_digital(E_CONTROLLER_DIGITAL_L2) && !master.get_digital(E_CONTROLLER_DIGITAL_UP)) || (armsPot.get_value() < 1250 && trayTarget != TRAY_FULLY_IN)) {
+        else if(master.get_digital(E_CONTROLLER_DIGITAL_L2) && !master.get_digital(E_CONTROLLER_DIGITAL_DOWN)) {
 
             armsTaskActive = true;
 			armsTarget = ARMS_FULLY_DOWN;
@@ -94,7 +94,7 @@ void opcontrol() { //run driver controls
 		else
 			trayTaskActive = true;
 
-		if(master.get_digital(E_CONTROLLER_DIGITAL_UP) && trayPot.get_value() < 750) {
+		if(master.get_digital(E_CONTROLLER_DIGITAL_DOWN) && trayPot.get_value() < 700) {
 
 			trayTaskActive = false;
 			pwrTray(100);
@@ -102,7 +102,7 @@ void opcontrol() { //run driver controls
 
 		}
 
-		else if(master.get_digital(E_CONTROLLER_DIGITAL_UP)) {
+		else if(master.get_digital(E_CONTROLLER_DIGITAL_DOWN)) {
 
 			trayTaskActive = true;
 			trayTarget = TRAY_OUT_OF_THE_WAY;
@@ -112,8 +112,14 @@ void opcontrol() { //run driver controls
 
 		}
 
-		else if(master.get_digital(E_CONTROLLER_DIGITAL_DOWN)) {
+		else if(master.get_digital(E_CONTROLLER_DIGITAL_B)) {
 
+			if(armsPot.get_value() >= 1300)
+				trayTarget = TRAY_OUT_OF_THE_WAY;
+
+			else if(armsPot.get_value() < 1300)
+				trayTarget = TRAY_FULLY_IN;
+			
 			lastArmsPot = armsPot.get_value();
 			armsTaskActive = true;
 			armsTarget = ARMS_FULLY_DOWN;
@@ -127,7 +133,7 @@ void opcontrol() { //run driver controls
 
 		}
 
-		Task::delay_until(&now, 100); //iterate 10 times per second
+		Task::delay_until(&now, 20); //iterate 50 times per second
 		
 	}
 
