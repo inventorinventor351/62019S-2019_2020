@@ -114,15 +114,23 @@ void opcontrol() { //run driver controls
 
 		else if(master.get_digital(E_CONTROLLER_DIGITAL_B)) {
 
-			if(armsPot.get_value() >= 1300)
+			if(armsPot.get_value() >= 1270)
 				trayTarget = TRAY_OUT_OF_THE_WAY;
 
-			else if(armsPot.get_value() < 1300)
+			else if(armsPot.get_value() < 1270)
 				trayTarget = TRAY_FULLY_IN;
 			
 			lastArmsPot = armsPot.get_value();
 			armsTaskActive = true;
 			armsTarget = ARMS_FULLY_DOWN;
+
+		}
+
+		else if(armsPot.get_value() < 1205) {
+
+			armsTarget = ARMS_FULLY_DOWN;
+			armsTaskActive = false;
+			pwrArms(0);
 
 		}
 

@@ -13,7 +13,7 @@ void armsTask(void* param) {
 
     std::uint_least32_t now = millis();
 
-    PID armsPID (0.5, 0.001, 0);
+    PID armsPID (0.5, 0.00075, 0);
     armsPID.setOutputBounds(0, 100);
 
     while(true) {
