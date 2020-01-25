@@ -13,7 +13,7 @@ void trayTask(void* param) {
 
     std::uint_least32_t now = millis();
 
-    PID trayPID (0.1, 0.00004, 0);
+    PID trayPID (0.0875, 0.00004, 0);
     trayPID.setOutputBounds(0, 100);
 
     while(true) {

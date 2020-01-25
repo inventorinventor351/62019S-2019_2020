@@ -11,9 +11,9 @@ void redSmallZone() {
     basePivot(510, 470, 90);
     pwrRollers(100);
     driveStraight(3885, 3670, 30);
-    pwrRollers(40);
+    pwrRollers(22.5);
     driveStraight(-1500, 940, 90);
-    pwrRollers(-15);
+    pwrRollers(-20);
     basePivot(1170, 1240, 90);
     pwrRollers(0);
     driveStraight(1425, 890, 90);
