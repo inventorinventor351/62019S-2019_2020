@@ -36,7 +36,7 @@ double FPID::run() {
     prevSystemVar = systemVar; //set previous system variable to current system variable in order to use it next iteration
     output = (kF * setPoint + (minOutput * sgn(setPoint))) + (kP * error) + (kI * integral) - (kD * derivative); //calculate output by summing all components of FPID
 
-    if(fabs(output) > maxOutput) { //integral windup prevention
+    if(fabs(output) >= maxOutput) { //integral windup prevention
 
         integrate = (sgn(error) == sgn(output)) ? false : true; //if absolute value of ouput is greater than max output AND the sign of the error is the same as the sign of the ouput, then stop integrating
         return maxOutput * sgn(output);
