@@ -48,7 +48,7 @@ void competition_initialize() { //display auton selector
 
 void autonomous() { //run auton that was selector from auton selector
 
-	redSmallZone();
+	redSmallZone5Pt();
 
 }
 
@@ -58,6 +58,8 @@ void opcontrol() { //run driver controls
 	std::uint_least32_t now = millis();
 
 	int lastArmsPot = armsPot.get_value();
+
+	//deploy();
 
 	while (true) { //loop indefinitely
 
@@ -129,6 +131,13 @@ void opcontrol() { //run driver controls
 		else if(armsPot.get_value() < 1205) {
 
 			armsTarget = ARMS_FULLY_DOWN;
+			armsTaskActive = false;
+			pwrArms(0);
+
+		}
+
+		else if(trayTarget == TRAY_FULLY_OUT || trayPot.get_value() > 1320) {
+
 			armsTaskActive = false;
 			pwrArms(0);
 
