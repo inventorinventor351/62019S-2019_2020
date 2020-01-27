@@ -26,7 +26,17 @@ void disabled() { //disable all subsystems
 
 void initialize() { //set motor break modes and start subsystem tasks
 	
+	leftBase1.set_brake_mode(E_MOTOR_BRAKE_COAST); //set break mode to coast, a.k.a. no background motor control
+	leftBase2.set_brake_mode(E_MOTOR_BRAKE_COAST); //set break mode to coast, a.k.a. no background motor control
+	rightBase1.set_brake_mode(E_MOTOR_BRAKE_COAST); //set break mode to coast, a.k.a. no background motor control
+	rightBase2.set_brake_mode(E_MOTOR_BRAKE_COAST); //set break mode to coast, a.k.a. no background motor control
+	leftRoller.set_brake_mode(E_MOTOR_BRAKE_HOLD); //set break mode to hold, a.k.a. background motor control holds motor's current position
+	rightRoller.set_brake_mode(E_MOTOR_BRAKE_HOLD); //set break mode to hold, a.k.a. background motor control holds motor's current position
+	liftMtr.set_brake_mode(E_MOTOR_BRAKE_COAST); //set break mode to coast, a.k.a. no background motor control
+	trayMtr.set_brake_mode(E_MOTOR_BRAKE_COAST); //set break mode to coast, a.k.a. no background motor control
 
+	Task trayControl (trayTask, (void*)"PROS", "PID Controlled Tray"); //allocate memory to run tray PID control in background
+    Task liftControl (liftTask, (void*)"PROS", "PID Controlled Lift"); //allocate memory to run lift PID control in background
 
 }
 
