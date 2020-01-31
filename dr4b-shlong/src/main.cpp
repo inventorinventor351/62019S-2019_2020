@@ -35,6 +35,7 @@ void initialize() { //set motor break modes and start subsystem tasks
 	liftMtr.set_brake_mode(E_MOTOR_BRAKE_COAST); //set break mode to coast, a.k.a. no background motor control
 	trayMtr.set_brake_mode(E_MOTOR_BRAKE_COAST); //set break mode to coast, a.k.a. no background motor control
 
+	//Task baseControl (baseVelControl, (void*)"PROS", "FPID Controlled Base"); //allocate memory to run base FPID control in background
 	Task trayControl (trayTask, (void*)"PROS", "PID Controlled Tray"); //allocate memory to run tray PID control in background
     Task liftControl (liftTask, (void*)"PROS", "PID Controlled Lift"); //allocate memory to run lift PID control in background
 
