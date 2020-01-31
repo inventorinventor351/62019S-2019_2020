@@ -42,7 +42,7 @@ void initialize() { //set motor break modes and start subsystem tasks
 
 void competition_initialize() { //display auton selector
 
-
+	
 
 }
 

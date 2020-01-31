@@ -3,7 +3,7 @@
 
 #define _USE_MATH_DEFINES //allows use of already defined mathematical constants
 #include "api.h" //includes PROS library that is needed to control motors and read sensor values
-#include "pros/apix.h" //includes addition tools from PROS, most importantly LLEMU functionality (aka custom v5 screen UI)
+#include "pros/apix.h" //includes addition tools from PROS, most importantly LVGL functionality (aka custom v5 screen UI)
 
 using namespace pros; //don't have to "pros::" every time
 
