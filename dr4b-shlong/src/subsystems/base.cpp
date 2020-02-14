@@ -14,13 +14,6 @@ void pwrRightBase(double voltPerc) {
 
 }
 
-void pwrRightBase(double voltPerc) {
-
-    rightBase1.move_voltage(voltPerc * 12000 / 100); //divided percentage by 100 to get ratio and multiply ratio with 12000
-    rightBase2.move_voltage(voltPerc * 12000 / 100);
-
-}
-
 double getLeftBase() {
 
     return (leftBase1.get_position() + leftBase2.get_position()) / 2.0; //average left front motor's and left back motor's encoder values

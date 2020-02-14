@@ -13,7 +13,7 @@ void trayTask(void* param) {
 
     std::uint_least32_t now = millis();
 
-    FPID trayPID (0, 0, 0, 0); //kF = 0, kP = 0, kI = 0, kD = 0
+    FPID trayPID (0, 0.125, 0.000075, 1); //kF = 0, kP = 0.125, kI = 0.000075, kD = 1
     trayPID.setOutputBounds(0, 100); //minOutput = 0%, maxOutput = 100%
 
     while(true) { //loop indefinitely
@@ -24,9 +24,11 @@ void trayTask(void* param) {
             trayPID.setSystemVar(trayPot.get_value()); //set system variable to the tray potentiometer
             pwrTray(trayPID.run()); //run FPID algorithm using variables specified above and power the tray motor to the output
 
+            //std::cout << trayPot.get_value() << "  |  " << trayPID.run() << "\n";
+
         }
 
-        Task::delay_until(&now, 10); //iterate 100 times a second
+        Task::delay_until(&now, 5); //iterate 200 times a second
 
     }
 

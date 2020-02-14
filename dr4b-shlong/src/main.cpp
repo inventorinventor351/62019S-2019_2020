@@ -32,7 +32,7 @@ void initialize() { //set motor break modes and start subsystem tasks
 	rightBase2.set_brake_mode(E_MOTOR_BRAKE_COAST); //set break mode to coast, a.k.a. no background motor control
 	leftRoller.set_brake_mode(E_MOTOR_BRAKE_HOLD); //set break mode to hold, a.k.a. background motor control holds motor's current position
 	rightRoller.set_brake_mode(E_MOTOR_BRAKE_HOLD); //set break mode to hold, a.k.a. background motor control holds motor's current position
-	liftMtr.set_brake_mode(E_MOTOR_BRAKE_COAST); //set break mode to coast, a.k.a. no background motor control
+	liftMtr.set_brake_mode(E_MOTOR_BRAKE_HOLD); //set break mode to coast, a.k.a. no background motor control
 	trayMtr.set_brake_mode(E_MOTOR_BRAKE_COAST); //set break mode to coast, a.k.a. no background motor control
 
 	//Task baseControl (baseVelControl, (void*)"PROS", "FPID Controlled Base"); //allocate memory to run base FPID control in background
@@ -58,6 +58,10 @@ void opcontrol() { //run driver controls
 
 	std::uint_least32_t now = millis();
 
+	int lastTrayPot = trayPot.get_value();
+
+	liftTaskActive = false;
+
 	while (true) { //loop indefinitely
 
 		pwrLeftBase(master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y) * 100 / 127);
@@ -67,30 +71,61 @@ void opcontrol() { //run driver controls
 			pwrRollers(100);
 
 		else if(master.get_digital(E_CONTROLLER_DIGITAL_R2))
-			pwrRollers(-100);
+			pwrRollers(-65);
 
 		else
 			pwrRollers(0);
 
-		if(master.get_digital(E_CONTROLLER_DIGITAL_L1))
-			pwrTray(100);
+		if(master.get_digital(E_CONTROLLER_DIGITAL_L1)) {
 
-		else if(master.get_digital(E_CONTROLLER_DIGITAL_L2))
-			pwrTray(-100);
+			trayTaskActive = true;
+			trayTarget = TRAY_FULL_UP;
 
-		else
+		}
+
+		else if(master.get_digital(E_CONTROLLER_DIGITAL_L2)) {
+
+			trayTaskActive = true;
+			trayTarget = TRAY_FULLY_DOWN;
+
+		}
+
+		else {
+
+			trayTaskActive = false;
 			pwrTray(0);
 
-		if(master.get_digital(E_CONTROLLER_DIGITAL_UP))
+		}
+
+		if(master.get_digital(E_CONTROLLER_DIGITAL_DOWN)) {
+
+			liftMtr.set_brake_mode(E_MOTOR_BRAKE_HOLD);
 			pwrLift(100);
 
-		else if(master.get_digital(E_CONTROLLER_DIGITAL_DOWN))
+		}
+
+		else if(master.get_digital(E_CONTROLLER_DIGITAL_B)) {
+
+			liftMtr.set_brake_mode(E_MOTOR_BRAKE_HOLD);
 			pwrLift(-100);
 
-		else
+		}
+
+		else if(liftMtr.get_position() < 100) {
+
+			liftMtr.set_brake_mode(E_MOTOR_BRAKE_COAST);
 			pwrLift(0);
 
-		Task::delay_until(&now, 100); //iterate 10 times per second
+		}
+		
+		else {
+
+			liftMtr.set_brake_mode(E_MOTOR_BRAKE_HOLD);
+			pwrLift(0);
+
+		}
+
+		Task::delay_until(&now, 10); //iterate 100 times per second
 		
 	}
 

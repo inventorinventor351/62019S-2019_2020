@@ -13,7 +13,7 @@ void liftTask(void* param) {
 
     std::uint_least32_t now = millis();
 
-    FPID liftPID (0, 0, 0, 0); //kF = 0, kP = 0, kI = 0, kD = 0
+    FPID liftPID (0, 1, 0.01, 0); //kF = 0, kP = 1, kI = 0.01, kD = 0
     liftPID.setOutputBounds(0, 100); //minOutput = 0%, maxOutput = 100%
 
     while(true) { //loop indefinitely
@@ -21,12 +21,14 @@ void liftTask(void* param) {
         if(liftTaskActive) { //if liftTaskActive equals true, then run code inside brackets
 
             liftPID.setSetPoint(liftTarget); //set setpoint to the lift target specified by user
-            liftPID.setSystemVar(liftPot.get_value()); //set system variable to the lift potentiometer
+            liftPID.setSystemVar(liftMtr.get_position()); //set system variable to the lift potentiometer
             pwrLift(liftPID.run()); //run FPID algorithm using variables specified above and power the lift motor to the output
 
         }
 
-        Task::delay_until(&now, 10); //iterate 100 times a second
+        //std::cout << liftTarget << "  |  " << liftMtr.get_position() << "  |  " << liftPID.run() << "\n";
+
+        Task::delay_until(&now, 5); //iterate 200 times a second
 
     }
 

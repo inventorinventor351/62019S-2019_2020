@@ -7,7 +7,7 @@ extern Controller master; //main and only controller
 extern ADIEncoder leftEnc; //encoder on the left tracker wheel
 extern ADIEncoder rightEnc; //encoder on the right tracker wheel
 extern ADIAnalogIn trayPot; //potentiometer on the tray
-extern ADIAnalogIn liftPot; //potentionmeter on the dr4b lift
+extern ADIAnalogIn randoPot; //random potentiometer we left on the lift bc we were too lazy to rewire
 
 /* V5 COMPONENTS */
 extern Motor leftBase1; //front left base motor
