@@ -81,12 +81,15 @@ void opcontrol() { //run driver controls
 			trayTaskActive = true;
 			trayTarget = TRAY_FULL_UP;
 
+			leftRoller.set_brake_mode(E_MOTOR_BRAKE_COAST);
+			rightRoller.set_brake_mode(E_MOTOR_BRAKE_COAST);
+
 		}
 
 		else if(master.get_digital(E_CONTROLLER_DIGITAL_L2)) {
 
-			trayTaskActive = true;
-			trayTarget = TRAY_FULLY_DOWN;
+			trayTaskActive = false;
+			pwrTray(-100);
 
 		}
 

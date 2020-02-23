@@ -13,7 +13,7 @@ void trayTask(void* param) {
 
     std::uint_least32_t now = millis();
 
-    FPID trayPID (0, 0.1, 0.0000875, 0); //kF = 0, kP = 0.1, kI = 0.0000875, kD = 0
+    FPID trayPID (0, 0.125, 0, 0); //kF = 0, kP = 0.125, kI = 0, kD = 0
     trayPID.setOutputBounds(0, 100); //minOutput = 0%, maxOutput = 100%
 
     while(true) { //loop indefinitely
