@@ -49,7 +49,7 @@ void competition_initialize() { //display auton selector
 
 void autonomous() { //run auton that was selector from auton selector
 
-
+	blueSmallZone();
 
 }
 

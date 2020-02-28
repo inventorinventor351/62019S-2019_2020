@@ -45,7 +45,7 @@ void driveStraight(double distance, int time, double maxOut) {
     std::uint_least32_t now = millis();
 
     double distVal = 0;
-    FPID dist (0, 0.2, 0, 0.325);
+    FPID dist (0, 0.2, 0, 0.425);
     dist.setOutputBounds(0, maxOut);
     dist.setSetPoint(distance);
 
@@ -59,11 +59,11 @@ void driveStraight(double distance, int time, double maxOut) {
 
     for(int i = 0; i < time; i+=10) {
 
-        const double leftEnc = getLeftBase();
-        const double rightEnc = getRightBase();
+        const double leftEncVal = getLeftBase();
+        const double rightEncVal = getRightBase();
 
-        dist.setSystemVar((leftEnc + rightEnc) / 2.0);
-        diff.setSystemVar((leftEnc - rightEnc) / 2.0);
+        dist.setSystemVar((leftEncVal + rightEncVal) / 2.0);
+        diff.setSystemVar((leftEncVal - rightEncVal) / 2.0);
 
         distVal = dist.run();
         diffVal = diff.run();
@@ -71,7 +71,7 @@ void driveStraight(double distance, int time, double maxOut) {
         pwrLeftBase(distVal + diffVal);
         pwrRightBase(distVal - diffVal);
 
-        //std::cout << "time: " << i << "  |  " << "leftEnc: " << leftEnc << "  |  " << "leftPwr: " << distVal + diffVal << "  |  " << "rightEnc: " << rightEnc << "  |  " << "rightPwr: " << distVal - diffVal << "\n";
+        std::cout << "time: " << i << "  |  " << "leftEncVal: " << leftEncVal << "  |  " << "leftPwr: " << distVal + diffVal << "  |  " << "rightEncVal: " << rightEncVal << "  |  " << "rightPwr: " << distVal - diffVal << "\n";
 
         Task::delay_until(&now, 10);
 
@@ -92,7 +92,7 @@ void basePivot(double angle, int time, double maxOut) {
     dist.setSetPoint(0);
 
     double diffVal = 0;
-    FPID diff (0, 0.2, 0, 0.325);
+    FPID diff (0, 0.2, 0, 0.3);
     diff.setOutputBounds(0, maxOut);
     diff.setSetPoint(angle);
 
@@ -101,8 +101,8 @@ void basePivot(double angle, int time, double maxOut) {
 
     for(int i = 0; i < time; i+=10) {
 
-        const double leftEnc = getLeftBase();
-        const double rightEnc = getRightBase();
+        const double leftEncVal = getLeftBase();
+        const double rightEncVal = getRightBase();
 
         dist.setSystemVar((getLeftBase() + getRightBase()) / 2.0);
         diff.setSystemVar((getLeftBase() - getRightBase()) / 2.0);
@@ -113,7 +113,7 @@ void basePivot(double angle, int time, double maxOut) {
         pwrLeftBase(distVal + diffVal);
         pwrRightBase(distVal - diffVal);
 
-        //std::cout << "time: " << i << "  |  " << "leftEnc: " << leftEnc << "  |  " << "leftPwr: " << distVal + diffVal << "  |  " << "rightEnc: " << rightEnc << "  |  " << "rightPwr: " << distVal - diffVal << "\n";
+        std::cout << "time: " << i << "  |  " << "leftEncVal: " << leftEncVal << "  |  " << "leftPwr: " << distVal + diffVal << "  |  " << "rightEncVal: " << rightEncVal << "  |  " << "rightPwr: " << distVal - diffVal << "\n";
 
         Task::delay_until(&now, 10);
 
@@ -155,7 +155,7 @@ void getRightVel(void* param) {
 
     while(true) { //loop indefinitely
 
-        const int curretEncVal = leftEnc.get_value(); //get current encoder value
+        const int curretEncVal = rightEnc.get_value(); //get current encoder value
         rightVel = (double)(curretEncVal - prevEncVal) * k; //return k constant times difference between current encoder value and previous encoder value
         prevEncVal = curretEncVal; //save current encoder value for next iteration
 
