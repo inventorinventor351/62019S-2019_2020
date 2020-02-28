@@ -29,7 +29,7 @@ void blueSmallZone() {
     driveStraight(-1575, 1300, 90);
     pwrRollers(0);
     basePivot(-1170, 1300, 90);
-    driveStraight(1000, 800, 90);
+    driveStraight(1200, 1000, 90);
 
     //stack
     trayTarget = TRAY_FULL_UP;

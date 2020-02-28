@@ -32,13 +32,8 @@ void blueBigZone() {
     trayTarget = TRAY_FULL_UP;
     basePivot(0, 2000, 90);
 
-    //pull out
-    pwrLeftBase(-100);
-    pwrRightBase(-100);
-    betterDelay(200);
+    //pull out and lift lift up for driver
     trayTarget = TRAY_FULLY_DOWN;
-    betterDelay(400);
-    pwrLeftBase(0);
-    pwrRightBase(0);
+    driveStraight(-900, 800, 90);
 
 }
