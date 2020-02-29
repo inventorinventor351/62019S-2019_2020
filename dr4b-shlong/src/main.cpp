@@ -45,7 +45,45 @@ void initialize() { //set motor break modes and start subsystem tasks
 
 void competition_initialize() { //display auton selector
 
+	lv_obj_t *label = lv_label_create(lv_scr_act(), NULL);
 	
+	while(competition::is_disabled()) {
+
+		autonCount = (int)floor(5 * randoPot.get_value() / 4095.0);
+
+		switch(autonCount) {
+
+			case 0:
+				lv_label_set_text(label, "DO NOTHING");
+				break;
+
+			case 1:
+				lv_label_set_text(label, "BLUE SMALL ZONE");
+				break;
+			
+			case 2:
+				lv_label_set_text(label, "BLUE BIG ZONE");
+				break;
+			
+			case 3:
+				lv_label_set_text(label, "RED SMALL ZONE");
+				break;
+
+			case 4:
+				lv_label_set_text(label, "RED BIG ZONE");
+				break;
+
+			default:
+				lv_label_set_text(label, "ERROR");
+				break;
+
+		}
+
+		lv_obj_align(label, NULL, LV_ALIGN_CENTER, 0, 0);
+
+		betterDelay(100); //iterate 10 times a second
+
+	}
 
 }
 
