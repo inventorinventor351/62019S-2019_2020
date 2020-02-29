@@ -124,8 +124,6 @@ void opcontrol() { //run driver controls
 
 	std::uint_least32_t now = millis();
 
-	int lastTrayPot = trayPot.get_value();
-
 	liftTaskActive = false;
 
 	while (true) { //loop indefinitely
