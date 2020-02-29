@@ -1,5 +1,7 @@
 #include "main.h"
 
+int autonCount = 0;
+
 double sgn(double x) { //returns sign (-1 or 1) of a number, and 0 for 0
 
 	return (x > 0) - (x < 0); //really cool way of finding sign of a number
@@ -49,7 +51,33 @@ void competition_initialize() { //display auton selector
 
 void autonomous() { //run auton that was selector from auton selector
 
-	blueSmallZone();
+	switch(autonCount) {
+
+		case 0:
+			//do nothing
+			break;
+
+		case 1:
+			blueSmallZone();
+			break;
+		
+		case 2:
+			blueBigZone();
+			break;
+		
+		case 3:
+			redSmallZone();
+			break;
+
+		case 4:
+			redBigZone();
+			break;
+
+		default:
+			//do nothing
+			break;
+
+	}
 
 }
 

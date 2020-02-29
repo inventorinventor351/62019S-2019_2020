@@ -5,6 +5,8 @@
 #include "api.h" //includes PROS library that is needed to control motors and read sensor values
 #include "pros/apix.h" //includes addition tools from PROS, most importantly LVGL functionality (aka custom v5 screen UI)
 
+extern int autonCount;
+
 using namespace pros; //don't have to "pros::" every time
 
 #ifdef __cplusplus //declarations of PROS's main functions
