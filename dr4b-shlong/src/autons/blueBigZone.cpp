@@ -4,6 +4,7 @@ void blueBigZone() {
 
     //deploy
     pwrRollers(100);
+    basePivot(0, 500, 90);
 
     //get second cube
     pwrRollers(80);
@@ -13,20 +14,20 @@ void blueBigZone() {
     liftTaskActive = true;
     liftTarget = 2700;
     basePivot(0, 1100, 90);
-    driveStraight(1550, 1800, 70);
+    driveStraight(1640, 1850, 70);
     liftTaskActive = false;
     pwrLift(-22.5);
     basePivot(0, 3000, 90);
     liftTaskActive = true;
     liftTarget = 0;
-    driveStraight(600, 750, 90);
+    driveStraight(325, 400, 90);
 
     //get last cube and go to goal
-    basePivot(1100, 1250, 90);
-    driveStraight(2600, 1750, 90);
-    basePivot(300, 600, 90);
+    basePivot(1100, 1200, 90);
+    driveStraight(2400, 1550, 90);
+    basePivot(275, 700, 90);
     pwrRollers(0);
-    driveStraight(550, 750, 90);
+    driveStraight(800, 750, 90);
 
     //stack
     trayTarget = TRAY_FULL_UP;

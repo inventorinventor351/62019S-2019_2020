@@ -41,11 +41,14 @@ void initialize() { //set motor break modes and start subsystem tasks
 	Task trayControl (trayTask, (void*)"PROS", "PID Controlled Tray"); //allocate memory to run tray PID control in background
     Task liftControl (liftTask, (void*)"PROS", "PID Controlled Lift"); //allocate memory to run lift PID control in background
 
+	liftMtr.tare_position();
+
 }
 
 void competition_initialize() { //display auton selector
 
 	lv_obj_t *label = lv_label_create(lv_scr_act(), NULL);
+	lv_label_set_recolor(label, true);
 	
 	while(competition::is_disabled()) {
 
@@ -54,27 +57,27 @@ void competition_initialize() { //display auton selector
 		switch(autonCount) {
 
 			case 0:
-				lv_label_set_text(label, "DO NOTHING");
+				lv_label_set_text(label, "#ffff00 Do Nothing#");
 				break;
 
 			case 1:
-				lv_label_set_text(label, "BLUE SMALL ZONE");
+				lv_label_set_text(label, "#0000ff blue small zone#");
 				break;
 			
 			case 2:
-				lv_label_set_text(label, "BLUE BIG ZONE");
+				lv_label_set_text(label, "#0000ff BLUE BIG ZONE#");
 				break;
 			
 			case 3:
-				lv_label_set_text(label, "RED SMALL ZONE");
+				lv_label_set_text(label, "#ff0000 red small zone#");
 				break;
 
 			case 4:
-				lv_label_set_text(label, "RED BIG ZONE");
+				lv_label_set_text(label, "#ff0000 RED BIG ZONE#");
 				break;
 
 			default:
-				lv_label_set_text(label, "ERROR");
+				lv_label_set_text(label, "#ffffff Error#");
 				break;
 
 		}
