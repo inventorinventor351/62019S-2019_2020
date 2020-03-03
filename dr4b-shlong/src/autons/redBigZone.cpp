@@ -4,7 +4,7 @@ void redBigZone() {
 
     //deploy
     pwrRollers(100);
-    basePivot(0, 500, 90);
+    basePivot(0, 350, 90);
 
     //get second cube
     pwrRollers(80);
@@ -23,18 +23,23 @@ void redBigZone() {
     driveStraight(325, 400, 90);
 
     //get last cube and go to goal
-    basePivot(-1100, 1200, 90);
-    driveStraight(2400, 1550, 90);
+    basePivot(-1100, 1150, 90);
+    driveStraight(2400, 1500, 90);
     basePivot(-275, 700, 90);
     pwrRollers(0);
     driveStraight(800, 750, 90);
 
     //stack
     trayTarget = TRAY_FULL_UP;
-    basePivot(0, 2000, 90);
+    basePivot(0, 2250, 90);
 
-    //pull out and lift lift up for driver
+    //pull out
+    pwrLeftBase(-100);
+    pwrRightBase(-100);
+    betterDelay(200);
     trayTarget = TRAY_FULLY_DOWN;
-    driveStraight(-900, 800, 90);
+    betterDelay(800);
+    pwrLeftBase(0);
+    pwrRightBase(0);
 
 }
