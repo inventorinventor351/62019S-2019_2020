@@ -27,7 +27,7 @@ void blueBigZone() {
     driveStraight(2400, 1500, 90);
     basePivot(275, 700, 90);
     pwrRollers(0);
-    driveStraight(800, 750, 90);
+    driveStraight(675, 750, 90);
 
     //stack
     trayTarget = TRAY_FULL_UP;

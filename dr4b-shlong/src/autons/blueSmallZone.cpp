@@ -2,37 +2,37 @@
 
 void blueSmallZone() {
 
-    //deploy
+    //go forward to avoid anti tip hitting wall and then deploy
+    driveStraight(500, 400, 90);
     pwrRollers(100);
     liftTaskActive = false;
     pwrLift(100);
-    basePivot(0, 275, 90);
+    basePivot(0, 250, 90);
     pwrLift(-100);
-    basePivot(0, 275, 90);
+    basePivot(0, 250, 90);
     pwrLift(0);
-    basePivot(0, 100, 90);
 
-    //collect first two
-    driveStraight(1150, 700, 90);
-    driveStraight(900, 1700, 25);
+    //go forward and get first two cubes
+    driveStraight(800, 600, 90);
+    driveStraight(800, 1500, 25);
 
-    //turn, go back, and face the four cubes
-    basePivot(550, 900, 90);
-    driveStraight(-2500, 1400, 90);
-    basePivot(-600, 1000, 90);
+    //turn, go back, and then turn again, facing last 4 cubes
+    basePivot(575, 970, 90);
+    driveStraight(-2375, 1270, 90);
+    basePivot(-600, 970, 90);
 
-    //collect last four
-    driveStraight(2500, 2200, 45);
+    //go forward and collect last four cubes
+    driveStraight(2200, 1970, 45);
 
-    //turn and go to goal
-    driveStraight(-1575, 1300, 90);
-    basePivot(-1175, 1350, 90);
-    driveStraight(950, 1000, 90);
+    //go back, turn, and go to zone
+    driveStraight(-1575, 1570, 90);
+    basePivot(-1175, 1470, 90);
+    driveStraight(950, 970, 90);
     pwrRollers(0);
 
     //stack
     trayTarget = TRAY_FULL_UP;
-    basePivot(0, 2250, 90);
+    basePivot(0, 2200, 90);
 
     //pull out
     pwrLeftBase(-100);
