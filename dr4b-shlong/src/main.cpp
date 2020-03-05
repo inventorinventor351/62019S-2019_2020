@@ -1,6 +1,6 @@
 #include "main.h"
 
-int autonCount = 0;
+int autonCount = 2;
 
 double sgn(double x) { //returns sign (-1 or 1) of a number, and 0 for 0
 
@@ -138,7 +138,7 @@ void opcontrol() { //run driver controls
 			pwrRollers(100);
 
 		else if(master.get_digital(E_CONTROLLER_DIGITAL_R2))
-			pwrRollers(-65);
+			pwrRollers(-100);
 
 		else
 			pwrRollers(0);

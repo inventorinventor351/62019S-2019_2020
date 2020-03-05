@@ -7,7 +7,7 @@ void pwrLift(double voltPerc) {
 }
 
 double liftTarget = LIFT_FULLY_DOWN; //lift should stay down at start of program execution
-bool liftTaskActive = true; //lift task should be active at start of program execution
+bool liftTaskActive = false; //lift task should be deactivated at start of program execution
 
 void liftTask(void* param) {
 
