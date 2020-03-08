@@ -21,7 +21,7 @@ void liftTask(void* param) {
         if(liftTaskActive) { //if liftTaskActive equals true, then run code inside brackets
 
             liftPID.setSetPoint(liftTarget); //set setpoint to the lift target specified by user
-            liftPID.setSystemVar(liftMtr.get_position()); //set system variable to the lift potentiometer
+            liftPID.setSystemVar(liftMtr.get_position()); //set system variable to the lift motor encoder
             pwrLift(liftPID.run()); //run FPID algorithm using variables specified above and power the lift motor to the output
 
         }

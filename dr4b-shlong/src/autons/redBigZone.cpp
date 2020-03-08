@@ -2,44 +2,42 @@
 
 void redBigZone() {
 
-    //deploy
+    //deploy and go forward to collect first cube
     pwrRollers(100);
     basePivot(0, 350, 90);
+    driveStraight(600, 950, 30);
 
-    //get second cube
-    pwrRollers(80);
-    driveStraight(900, 950, 90);
-
-    //lift up to next four cubes
+    //go forward, raise lift, and go a little more forward to four stack
+    driveStraight(1300, 920, 90);
     liftTaskActive = true;
-    liftTarget = 2700;
-    basePivot(0, 1100, 90);
-    driveStraight(1640, 1850, 70);
+    liftTarget = 2750;
+    basePivot(0, 2150, 90);
+    driveStraight(600, 800, 70);
+
+    //go down on stack
     liftTaskActive = false;
-    pwrLift(-22.5);
-    basePivot(0, 3000, 90);
+    pwrLift(-40);
+    basePivot(0, 1950, 90);
     liftTaskActive = true;
     liftTarget = 0;
-    driveStraight(325, 400, 90);
 
-    //get last cube and go to goal
-    basePivot(-1100, 1150, 90);
-    driveStraight(2400, 1500, 90);
-    basePivot(-275, 700, 90);
+    //turn, go forward, collect last cube, and go to goal
+    basePivot(-1050, 950, 90);
+    driveStraight(1600, 1350, 90);
+    basePivot(-290, 1000, 90);
+    trayTarget = 900;
     pwrRollers(0);
-    driveStraight(675, 750, 90);
+    driveStraight(1500, 1300, 90);
 
     //stack
     trayTarget = TRAY_FULL_UP;
-    basePivot(0, 2250, 90);
+    basePivot(0, 1300, 90);
 
     //pull out
-    pwrLeftBase(-100);
-    pwrRightBase(-100);
-    betterDelay(200);
-    trayTarget = TRAY_FULLY_DOWN;
-    betterDelay(800);
+    pwrLeftBase(-40);
+    pwrRightBase(-40);
+    betterDelay(500);
     pwrLeftBase(0);
-    pwrRightBase(0);
+    pwrRightBase(0);    
 
 }

@@ -11,6 +11,8 @@ void blueSmallZone() {
     pwrLift(-100);
     basePivot(0, 250, 90);
     pwrLift(0);
+    liftTaskActive = true;
+    liftTarget = 0;
 
     //go forward and get first two cubes
     driveStraight(800, 600, 90);
