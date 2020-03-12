@@ -8,7 +8,7 @@ double sgn(double x) { //returns sign (-1 or 1) of a number, and 0 for 0
 
 }
 
-void btterDelay(int ms) { //delays for a certain number for milliseconds
+void betterDelay(int ms) { //delays for a certain number for milliseconds
 
 	std::uint_least32_t now = millis();
 
