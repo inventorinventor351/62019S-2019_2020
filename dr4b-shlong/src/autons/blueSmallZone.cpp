@@ -1,6 +1,7 @@
 #include "main.h"
 
-void blueSmallZone() {
+void blueSmallZone()
+{
 
     //go forward to avoid anti tip hitting wall and then deploy
     driveStraight(500, 400, 90);
@@ -44,5 +45,4 @@ void blueSmallZone() {
     betterDelay(800);
     pwrLeftBase(0);
     pwrRightBase(0);
-
 }

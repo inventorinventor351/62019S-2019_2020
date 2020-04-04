@@ -1,6 +1,7 @@
 #include "main.h"
 
-void redBigZone() {
+void redBigZone()
+{
 
     //deploy and go forward to collect first cube
     pwrRollers(100);
@@ -38,6 +39,5 @@ void redBigZone() {
     pwrRightBase(-40);
     betterDelay(500);
     pwrLeftBase(0);
-    pwrRightBase(0);    
-
+    pwrRightBase(0);
 }

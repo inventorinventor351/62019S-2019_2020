@@ -1,6 +1,7 @@
 #include "main.h"
 
-void redSmallZone() {
+void redSmallZone()
+{
 
     //go forward to avoid anti tip hitting wall and then deploy
     driveStraight(500, 400, 90);
