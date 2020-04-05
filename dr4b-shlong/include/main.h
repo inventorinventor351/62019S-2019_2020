@@ -27,13 +27,13 @@ extern "C"
 #include <vector>               //c++ standard library that gives access to more flexible arrays
 double sgn(double x);           //returns sign of number
 void betterDelay(int ms);       //delays for a certain number of milliseconds
-#include "pragma.h"             //creates objects for all sensors, motors, and controllers that robot uses
 #include "FPID.h"               //reusable PID class that makes motor control easier and more portable
+#include "autons.h"             //methods related to robot macros and autonomi
+#include "pragma.h"             //creates objects for all sensors, motors, and controllers that robot uses
 #include "subsystems/base.h"    //methods and tasks related to the base
+#include "subsystems/lift.h"    //methods and tasks related to the dr4b lift
 #include "subsystems/rollers.h" //methods and tasks related to the intake rollers
 #include "subsystems/tray.h"    //methods and tasks related to the tray
-#include "subsystems/lift.h"    //methods and tasks related to the dr4b lift
-#include "autons.h"             //methods related to robot macros and autonomi
 
 #endif
 
