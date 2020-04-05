@@ -1,8 +1,6 @@
 #include "main.h"
 
-void redBigZone()
-{
-
+void redBigZone() {
     //deploy and go forward to collect first cube
     pwrRollers(100);
     basePivot(0, 350, 90);
